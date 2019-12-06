@@ -7,6 +7,9 @@ description = "Rust API client for firefly-iii"
 license = "AGPL-3.0"
 documentation = "https://docs.rs/firefly-iii"
 repository = "https://github.com/barskern/firefly-iii-rs"
+readme = "README.md"
+keywords = ["openapi", "economy", "client"]
+categories = ["api-bindings"]
 
 [dependencies]
 async-trait = { version = "0.1" }

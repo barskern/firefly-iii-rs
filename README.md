@@ -1,6 +1,9 @@
 # Rust API client for firefly-iii
 
-This is the official documentation of the Firefly III API. You can find accompanying documentation on the website of Firefly III itself (see below). Please report any bugs or issues. This version of the API is live from version v4.7.9 and onwards. You may use the \"Authorize\" button to try the API below. 
+[![Crates.io](https://img.shields.io/crates/v/firefly-iii.svg?maxAge=2592000)](https://crates.io/crates/firefly-iii)
+[![Documentation](https://docs.rs/firefly-iii/badge.svg)](https://docs.rs/firefly-iii)
+
+This is the official documentation of the Firefly III API. You can find accompanying documentation on the website of Firefly III itself (see below). Please report any bugs or issues. This version of the API is live from version v4.7.9 and onwards. You may use the \"Authorize\" button to try the API below.
 
 ## Overview
 
@@ -16,7 +19,7 @@ For more information, please visit [https://firefly-iii.org](https://firefly-iii
 Put the package under your project folder and add the following to `Cargo.toml` under `[dependencies]`:
 
 ```
-    openapi = { path = "./generated" }
+firefly-iii = "0.1.0-alpha.1"
 ```
 
 ## Documentation for API Endpoints
@@ -154,7 +157,7 @@ Class | Method | HTTP request | Description
 *TransactionsApi* | [**get_transaction_by_journal**](docs/TransactionsApi.md#get_transaction_by_journal) | **GET** /api/v1/transaction-journals/{id} | Get a single transaction, based on one of the underlying transaction journals.
 *TransactionsApi* | [**list_attachment_by_transaction**](docs/TransactionsApi.md#list_attachment_by_transaction) | **GET** /api/v1/transactions/{id}/attachments | Lists all attachments.
 *TransactionsApi* | [**list_event_by_transaction**](docs/TransactionsApi.md#list_event_by_transaction) | **GET** /api/v1/transactions/{id}/piggy_bank_events | Lists all piggy bank events.
-*TransactionsApi* | [**list_transaction**](docs/TransactionsApi.md#list_transaction) | **GET** /api/v1/transactions | List all the user's transactions. 
+*TransactionsApi* | [**list_transaction**](docs/TransactionsApi.md#list_transaction) | **GET** /api/v1/transactions | List all the user's transactions.
 *TransactionsApi* | [**store_transaction**](docs/TransactionsApi.md#store_transaction) | **POST** /api/v1/transactions | Store a new transaction
 *TransactionsApi* | [**update_transaction**](docs/TransactionsApi.md#update_transaction) | **PUT** /api/v1/transactions/{id} | Update existing transaction.
 *UsersApi* | [**delete_user**](docs/UsersApi.md#delete_user) | **DELETE** /api/v1/users/{id} | Delete a user.
@@ -285,4 +288,3 @@ cargo doc --open
 ## Author
 
 thegrumpydictator@gmail.com
-
