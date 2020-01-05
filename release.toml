@@ -5,5 +5,5 @@ post-release-commit-message = "Starting next development version {{next_version}
 tag-message = "{{crate_name}} version {{version}}"
 
 pre-release-replacements = [
-  {file="README.md", search="firefly-iii = .*", replace="predicates = \"{{version}}\""},
+  {file="README.md", search="firefly-iii = .*", replace="firefly-iii = \"{{version}}\""},
 ]
