@@ -1,6 +1,6 @@
 [package]
 name = "firefly-iii"
-version = "0.1.0-alpha.2"
+version = "0.1.0-alpha.3"
 authors = ["OpenAPI Generator team and contributors"]
 edition = "2018"
 description = "Rust API client for firefly-iii"
