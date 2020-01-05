@@ -57,8 +57,8 @@ pub struct Account {
     #[serde(rename = "include_net_worth", skip_serializing_if = "Option::is_none")]
     pub include_net_worth: Option<bool>,
     /// Is only mandatory when the type is asset.
-    #[serde(rename = "account_role")]
-    pub account_role: AccountRole,
+    #[serde(rename = "account_role", skip_serializing_if = "Option::is_none")]
+    pub account_role: Option<AccountRole>,
     /// Mandatory when the account_role is ccAsset. Can only be monthlyFull.
     #[serde(rename = "credit_card_type", skip_serializing_if = "Option::is_none")]
     pub credit_card_type: Option<CreditCardType>,
@@ -85,7 +85,7 @@ pub struct Account {
 }
 
 impl Account {
-    pub fn new(name: String, _type: Type, account_role: AccountRole) -> Account {
+    pub fn new(name: String, _type: Type) -> Account {
         Account {
             created_at: None,
             updated_at: None,
@@ -105,7 +105,7 @@ impl Account {
             currency_decimal_places: None,
             active: None,
             include_net_worth: None,
-            account_role,
+            account_role: None,
             credit_card_type: None,
             monthly_payment_date: None,
             liability_type: None,
