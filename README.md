@@ -19,7 +19,7 @@ For more information, please visit [https://firefly-iii.org](https://firefly-iii
 Put the package under your project folder and add the following to `Cargo.toml` under `[dependencies]`:
 
 ```
-firefly-iii = "0.1.0-alpha.4"
+firefly-iii = "0.1.0-alpha.5"
 ```
 
 ## Documentation for API Endpoints
