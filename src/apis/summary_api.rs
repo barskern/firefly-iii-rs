@@ -42,7 +42,7 @@ impl SummaryApi for SummaryApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/summary/basic", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         req_builder = req_builder.query(&[("start", &start.to_string())]);
         req_builder = req_builder.query(&[("end", &end.to_string())]);

@@ -188,7 +188,7 @@ Name | Type | Description  | Required | Notes
 **code** | **String** | The currency code. | [required] |
 **page** | Option<**i32**> | Page number. The default pagination is 50. |  |
 **date** | Option<**String**> | A date formatted YYYY-MM-DD. When added to the request, Firefly III will show the account's balance on that day.  |  |
-**_type** | Option<**String**> | Optional filter on the account type(s) returned |  |
+**_type** | Option<[**crate::models::AccountTypeFilter**](.md)> | Optional filter on the account type(s) returned |  |
 
 ### Return type
 
@@ -443,7 +443,7 @@ Name | Type | Description  | Required | Notes
 **page** | Option<**i32**> | Page number. The default pagination is per 50. |  |
 **start_date** | Option<**String**> | A date formatted YYYY-MM-DD, to limit the list of transactions.  |  |
 **end_date** | Option<**String**> | A date formatted YYYY-MM-DD, to limit the list of transactions.  |  |
-**_type** | Option<**String**> | Optional filter on the transaction type(s) returned |  |
+**_type** | Option<[**crate::models::TransactionTypeFilter**](.md)> | Optional filter on the transaction type(s) returned |  |
 
 ### Return type
 

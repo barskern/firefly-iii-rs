@@ -120,7 +120,7 @@ Name | Type | Description  | Required | Notes
 **page** | Option<**i32**> | Page number. The default pagination is 50. |  |
 **start** | Option<**String**> | A date formatted YYYY-MM-DD. Both the start and end date must be present.  |  |
 **end** | Option<**String**> | A date formatted YYYY-MM-DD. Both the start and end date must be present.  |  |
-**_type** | Option<**String**> | Optional filter on the transaction type(s) returned |  |
+**_type** | Option<[**crate::models::TransactionTypeFilter**](.md)> | Optional filter on the transaction type(s) returned |  |
 
 ### Return type
 

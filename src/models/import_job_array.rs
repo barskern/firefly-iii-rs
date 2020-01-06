@@ -15,20 +15,20 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct ImportJobArray {
-    #[serde(rename = "data", skip_serializing_if = "Option::is_none")]
-    pub data: Option<Vec<crate::models::ImportJob>>,
-    #[serde(rename = "meta", skip_serializing_if = "Option::is_none")]
-    pub meta: Option<crate::models::Meta>,
-    #[serde(rename = "links", skip_serializing_if = "Option::is_none")]
-    pub links: Option<crate::models::PageLink>,
+    #[serde(rename = "data")]
+    pub data: Vec<crate::models::ImportJob>,
+    #[serde(rename = "meta")]
+    pub meta: crate::models::Meta,
+    #[serde(rename = "links")]
+    pub links: crate::models::PageLink,
 }
 
 impl ImportJobArray {
-    pub fn new() -> ImportJobArray {
+    pub fn new(data: Vec<crate::models::ImportJob>, meta: crate::models::Meta, links: crate::models::PageLink) -> ImportJobArray {
         ImportJobArray {
-            data: None,
-            meta: None,
-            links: None,
+            data,
+            meta,
+            links,
         }
     }
 }

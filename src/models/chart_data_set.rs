@@ -20,7 +20,7 @@ pub struct ChartDataSet {
     pub label: Option<String>,
     /// The currency ID of the currency associated to the data in the entries.
     #[serde(rename = "currency_id", skip_serializing_if = "Option::is_none")]
-    pub currency_id: Option<f32>,
+    pub currency_id: Option<i32>,
     #[serde(rename = "currency_code", skip_serializing_if = "Option::is_none")]
     pub currency_code: Option<String>,
     #[serde(rename = "currency_symbol", skip_serializing_if = "Option::is_none")]

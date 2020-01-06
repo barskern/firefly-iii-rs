@@ -49,7 +49,7 @@ impl RuleGroupsApi for RuleGroupsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/rule_groups/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::DELETE, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::DELETE, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -70,7 +70,7 @@ impl RuleGroupsApi for RuleGroupsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/rule_groups/{id}/trigger", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::POST, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::POST, uri_str.as_str());
 
         if let Some(ref s) = start {
             req_builder = req_builder.query(&[("start", &s.to_string())]);
@@ -100,7 +100,7 @@ impl RuleGroupsApi for RuleGroupsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/rule_groups/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -120,7 +120,7 @@ impl RuleGroupsApi for RuleGroupsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/rule_groups/{id}/rules", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -143,7 +143,7 @@ impl RuleGroupsApi for RuleGroupsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/rule_groups", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -166,7 +166,7 @@ impl RuleGroupsApi for RuleGroupsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/rule_groups", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::POST, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::POST, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -187,7 +187,7 @@ impl RuleGroupsApi for RuleGroupsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/rule_groups/{id}/test", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -225,7 +225,7 @@ impl RuleGroupsApi for RuleGroupsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/rule_groups/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::PUT, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::PUT, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());

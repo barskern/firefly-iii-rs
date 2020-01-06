@@ -32,23 +32,23 @@ impl TagsApiClient {
 
 #[async_trait]
 pub trait TagsApi {
-    async fn delete_tag(&self, tag_id: &str) -> Result<(), Error>;
-    async fn get_tag(&self, tag_id: &str, page: Option<i32>) -> Result<crate::models::TagSingle, Error>;
+    async fn delete_tag(&self, tag: &str) -> Result<(), Error>;
+    async fn get_tag(&self, tag: &str, page: Option<i32>) -> Result<crate::models::TagSingle, Error>;
     async fn get_tag_cloud(&self, start: String, end: String) -> Result<crate::models::TagCloud, Error>;
     async fn list_tag(&self, page: Option<i32>) -> Result<crate::models::TagArray, Error>;
-    async fn list_transaction_by_tag(&self, tag_id: &str, page: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<&str>) -> Result<crate::models::TransactionArray, Error>;
-    async fn store_tag(&self, tag: crate::models::Tag) -> Result<crate::models::TagSingle, Error>;
-    async fn update_tag(&self, tag_id: &str, tag: crate::models::Tag) -> Result<crate::models::TagSingle, Error>;
+    async fn list_transaction_by_tag(&self, tag: &str, page: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<crate::models::TransactionTypeFilter>) -> Result<crate::models::TransactionArray, Error>;
+    async fn store_tag(&self, tag_model: crate::models::TagModel) -> Result<crate::models::TagSingle, Error>;
+    async fn update_tag(&self, tag: &str, tag_model: crate::models::TagModel) -> Result<crate::models::TagSingle, Error>;
 }
 
 #[async_trait]
 impl TagsApi for TagsApiClient {
-    async fn delete_tag(&self, tag_id: &str) -> Result<(), Error> {
+    async fn delete_tag(&self, tag: &str) -> Result<(), Error> {
         let configuration: &configuration::Configuration = self.configuration.borrow();
         let client = &configuration.client;
 
-        let uri_str = format!("{}/api/v1/tags/{tag_id}", configuration.base_path, tag_id=crate::apis::urlencode(tag_id));
-        let mut req_builder = client.request(reqwest::Method::DELETE, uri_str.as_str());
+        let uri_str = format!("{}/api/v1/tags/{tag}", configuration.base_path, tag=crate::apis::urlencode(tag));
+        let mut req_builder = client.request(::reqwest::Method::DELETE, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -64,12 +64,12 @@ impl TagsApi for TagsApiClient {
         Ok(())
     }
 
-    async fn get_tag(&self, tag_id: &str, page: Option<i32>) -> Result<crate::models::TagSingle, Error> {
+    async fn get_tag(&self, tag: &str, page: Option<i32>) -> Result<crate::models::TagSingle, Error> {
         let configuration: &configuration::Configuration = self.configuration.borrow();
         let client = &configuration.client;
 
-        let uri_str = format!("{}/api/v1/tags/{tag_id}", configuration.base_path, tag_id=crate::apis::urlencode(tag_id));
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let uri_str = format!("{}/api/v1/tags/{tag}", configuration.base_path, tag=crate::apis::urlencode(tag));
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -92,7 +92,7 @@ impl TagsApi for TagsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/tag-cloud", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         req_builder = req_builder.query(&[("start", &start.to_string())]);
         req_builder = req_builder.query(&[("end", &end.to_string())]);
@@ -114,7 +114,7 @@ impl TagsApi for TagsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/tags", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -132,12 +132,12 @@ impl TagsApi for TagsApiClient {
         Ok(client.execute(req).await?.error_for_status()?.json().await?)
     }
 
-    async fn list_transaction_by_tag(&self, tag_id: &str, page: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<&str>) -> Result<crate::models::TransactionArray, Error> {
+    async fn list_transaction_by_tag(&self, tag: &str, page: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<crate::models::TransactionTypeFilter>) -> Result<crate::models::TransactionArray, Error> {
         let configuration: &configuration::Configuration = self.configuration.borrow();
         let client = &configuration.client;
 
-        let uri_str = format!("{}/api/v1/tags/{tag_id}/transactions", configuration.base_path, tag_id=crate::apis::urlencode(tag_id));
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let uri_str = format!("{}/api/v1/tags/{tag}/transactions", configuration.base_path, tag=crate::apis::urlencode(tag));
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -164,12 +164,12 @@ impl TagsApi for TagsApiClient {
         Ok(client.execute(req).await?.error_for_status()?.json().await?)
     }
 
-    async fn store_tag(&self, tag: crate::models::Tag) -> Result<crate::models::TagSingle, Error> {
+    async fn store_tag(&self, tag_model: crate::models::TagModel) -> Result<crate::models::TagSingle, Error> {
         let configuration: &configuration::Configuration = self.configuration.borrow();
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/tags", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::POST, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::POST, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -177,7 +177,7 @@ impl TagsApi for TagsApiClient {
         if let Some(ref token) = configuration.oauth_access_token {
             req_builder = req_builder.bearer_auth(token.to_owned());
         };
-        req_builder = req_builder.json(&tag);
+        req_builder = req_builder.json(&tag_model);
 
         // send request
         let req = req_builder.build()?;
@@ -185,12 +185,12 @@ impl TagsApi for TagsApiClient {
         Ok(client.execute(req).await?.error_for_status()?.json().await?)
     }
 
-    async fn update_tag(&self, tag_id: &str, tag: crate::models::Tag) -> Result<crate::models::TagSingle, Error> {
+    async fn update_tag(&self, tag: &str, tag_model: crate::models::TagModel) -> Result<crate::models::TagSingle, Error> {
         let configuration: &configuration::Configuration = self.configuration.borrow();
         let client = &configuration.client;
 
-        let uri_str = format!("{}/api/v1/tags/{tag_id}", configuration.base_path, tag_id=crate::apis::urlencode(tag_id));
-        let mut req_builder = client.request(reqwest::Method::PUT, uri_str.as_str());
+        let uri_str = format!("{}/api/v1/tags/{tag}", configuration.base_path, tag=crate::apis::urlencode(tag));
+        let mut req_builder = client.request(::reqwest::Method::PUT, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -198,7 +198,7 @@ impl TagsApi for TagsApiClient {
         if let Some(ref token) = configuration.oauth_access_token {
             req_builder = req_builder.bearer_auth(token.to_owned());
         };
-        req_builder = req_builder.json(&tag);
+        req_builder = req_builder.json(&tag_model);
 
         // send request
         let req = req_builder.build()?;

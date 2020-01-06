@@ -46,7 +46,7 @@ impl ChartsApi for ChartsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/chart/ab/overview/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         req_builder = req_builder.query(&[("start", &start.to_string())]);
         req_builder = req_builder.query(&[("end", &end.to_string())]);
@@ -68,7 +68,7 @@ impl ChartsApi for ChartsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/chart/account/expense", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         req_builder = req_builder.query(&[("start", &start.to_string())]);
         req_builder = req_builder.query(&[("end", &end.to_string())]);
@@ -90,7 +90,7 @@ impl ChartsApi for ChartsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/chart/account/overview", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         req_builder = req_builder.query(&[("start", &start.to_string())]);
         req_builder = req_builder.query(&[("end", &end.to_string())]);
@@ -112,7 +112,7 @@ impl ChartsApi for ChartsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/chart/account/revenue", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         req_builder = req_builder.query(&[("start", &start.to_string())]);
         req_builder = req_builder.query(&[("end", &end.to_string())]);
@@ -134,7 +134,7 @@ impl ChartsApi for ChartsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/chart/category/overview", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         req_builder = req_builder.query(&[("start", &start.to_string())]);
         req_builder = req_builder.query(&[("end", &end.to_string())]);

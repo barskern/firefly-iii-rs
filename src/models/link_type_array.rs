@@ -15,20 +15,20 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct LinkTypeArray {
-    #[serde(rename = "data", skip_serializing_if = "Option::is_none")]
-    pub data: Option<Vec<crate::models::LinkTypeRead>>,
-    #[serde(rename = "meta", skip_serializing_if = "Option::is_none")]
-    pub meta: Option<crate::models::Meta>,
-    #[serde(rename = "links", skip_serializing_if = "Option::is_none")]
-    pub links: Option<crate::models::PageLink>,
+    #[serde(rename = "data")]
+    pub data: Vec<crate::models::LinkTypeRead>,
+    #[serde(rename = "meta")]
+    pub meta: crate::models::Meta,
+    #[serde(rename = "links")]
+    pub links: crate::models::PageLink,
 }
 
 impl LinkTypeArray {
-    pub fn new() -> LinkTypeArray {
+    pub fn new(data: Vec<crate::models::LinkTypeRead>, meta: crate::models::Meta, links: crate::models::PageLink) -> LinkTypeArray {
         LinkTypeArray {
-            data: None,
-            meta: None,
-            links: None,
+            data,
+            meta,
+            links,
         }
     }
 }

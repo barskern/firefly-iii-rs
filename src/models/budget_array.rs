@@ -15,17 +15,17 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct BudgetArray {
-    #[serde(rename = "data", skip_serializing_if = "Option::is_none")]
-    pub data: Option<Vec<crate::models::BudgetRead>>,
-    #[serde(rename = "meta", skip_serializing_if = "Option::is_none")]
-    pub meta: Option<crate::models::Meta>,
+    #[serde(rename = "data")]
+    pub data: Vec<crate::models::BudgetRead>,
+    #[serde(rename = "meta")]
+    pub meta: crate::models::Meta,
 }
 
 impl BudgetArray {
-    pub fn new() -> BudgetArray {
+    pub fn new(data: Vec<crate::models::BudgetRead>, meta: crate::models::Meta) -> BudgetArray {
         BudgetArray {
-            data: None,
-            meta: None,
+            data,
+            meta,
         }
     }
 }

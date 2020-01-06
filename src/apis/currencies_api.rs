@@ -37,7 +37,7 @@ pub trait CurrenciesApi {
     async fn disable_currency(&self, code: i32) -> Result<crate::models::CurrencySingle, Error>;
     async fn enable_currency(&self, code: &str) -> Result<crate::models::CurrencySingle, Error>;
     async fn get_currency(&self, code: &str) -> Result<crate::models::CurrencySingle, Error>;
-    async fn list_account_by_currency(&self, code: &str, page: Option<i32>, date: Option<&str>, _type: Option<&str>) -> Result<crate::models::AccountArray, Error>;
+    async fn list_account_by_currency(&self, code: &str, page: Option<i32>, date: Option<&str>, _type: Option<crate::models::AccountTypeFilter>) -> Result<crate::models::AccountArray, Error>;
     async fn list_available_budget_by_currency(&self, code: &str, page: Option<i32>) -> Result<crate::models::AvailableBudgetArray, Error>;
     async fn list_bill_by_currency(&self, code: &str, page: Option<i32>) -> Result<crate::models::BillArray, Error>;
     async fn list_budget_limit_by_currency(&self, code: &str, page: Option<i32>, start: Option<String>, end: Option<String>) -> Result<crate::models::BudgetLimitArray, Error>;
@@ -45,7 +45,7 @@ pub trait CurrenciesApi {
     async fn list_exchange_rate_by_currency(&self, code: &str, page: Option<i32>, date: Option<String>, start: Option<String>, end: Option<String>) -> Result<crate::models::ExchangeRateArray, Error>;
     async fn list_recurrence_by_currency(&self, code: &str, page: Option<i32>) -> Result<crate::models::RecurrenceArray, Error>;
     async fn list_rule_by_currency(&self, code: &str, page: Option<i32>) -> Result<crate::models::RuleArray, Error>;
-    async fn list_transaction_by_currency(&self, code: &str, page: Option<i32>, start_date: Option<String>, end_date: Option<String>, _type: Option<&str>) -> Result<crate::models::TransactionArray, Error>;
+    async fn list_transaction_by_currency(&self, code: &str, page: Option<i32>, start_date: Option<String>, end_date: Option<String>, _type: Option<crate::models::TransactionTypeFilter>) -> Result<crate::models::TransactionArray, Error>;
     async fn store_currency(&self, currency: crate::models::Currency) -> Result<crate::models::CurrencySingle, Error>;
     async fn update_currency(&self, code: &str, currency: crate::models::Currency) -> Result<crate::models::CurrencySingle, Error>;
 }
@@ -57,7 +57,7 @@ impl CurrenciesApi for CurrenciesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/currencies/{code}/default", configuration.base_path, code=crate::apis::urlencode(code));
-        let mut req_builder = client.request(reqwest::Method::POST, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::POST, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -77,7 +77,7 @@ impl CurrenciesApi for CurrenciesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/currencies/{code}", configuration.base_path, code=crate::apis::urlencode(code));
-        let mut req_builder = client.request(reqwest::Method::DELETE, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::DELETE, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -98,7 +98,7 @@ impl CurrenciesApi for CurrenciesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/currencies/{code}/disable", configuration.base_path, code=code);
-        let mut req_builder = client.request(reqwest::Method::POST, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::POST, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -118,7 +118,7 @@ impl CurrenciesApi for CurrenciesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/currencies/{code}/enable", configuration.base_path, code=crate::apis::urlencode(code));
-        let mut req_builder = client.request(reqwest::Method::POST, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::POST, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -138,7 +138,7 @@ impl CurrenciesApi for CurrenciesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/currencies/{code}", configuration.base_path, code=crate::apis::urlencode(code));
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -153,12 +153,12 @@ impl CurrenciesApi for CurrenciesApiClient {
         Ok(client.execute(req).await?.error_for_status()?.json().await?)
     }
 
-    async fn list_account_by_currency(&self, code: &str, page: Option<i32>, date: Option<&str>, _type: Option<&str>) -> Result<crate::models::AccountArray, Error> {
+    async fn list_account_by_currency(&self, code: &str, page: Option<i32>, date: Option<&str>, _type: Option<crate::models::AccountTypeFilter>) -> Result<crate::models::AccountArray, Error> {
         let configuration: &configuration::Configuration = self.configuration.borrow();
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/currencies/{code}/accounts", configuration.base_path, code=crate::apis::urlencode(code));
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -187,7 +187,7 @@ impl CurrenciesApi for CurrenciesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/currencies/{code}/available_budgets", configuration.base_path, code=crate::apis::urlencode(code));
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -210,7 +210,7 @@ impl CurrenciesApi for CurrenciesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/currencies/{code}/bills", configuration.base_path, code=crate::apis::urlencode(code));
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -233,7 +233,7 @@ impl CurrenciesApi for CurrenciesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/currencies/{code}/budget_limits", configuration.base_path, code=crate::apis::urlencode(code));
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -262,7 +262,7 @@ impl CurrenciesApi for CurrenciesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/currencies", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -285,7 +285,7 @@ impl CurrenciesApi for CurrenciesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/currencies/{code}/cer", configuration.base_path, code=crate::apis::urlencode(code));
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -317,7 +317,7 @@ impl CurrenciesApi for CurrenciesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/currencies/{code}/recurrences", configuration.base_path, code=crate::apis::urlencode(code));
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -340,7 +340,7 @@ impl CurrenciesApi for CurrenciesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/currencies/{code}/rules", configuration.base_path, code=crate::apis::urlencode(code));
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -358,12 +358,12 @@ impl CurrenciesApi for CurrenciesApiClient {
         Ok(client.execute(req).await?.error_for_status()?.json().await?)
     }
 
-    async fn list_transaction_by_currency(&self, code: &str, page: Option<i32>, start_date: Option<String>, end_date: Option<String>, _type: Option<&str>) -> Result<crate::models::TransactionArray, Error> {
+    async fn list_transaction_by_currency(&self, code: &str, page: Option<i32>, start_date: Option<String>, end_date: Option<String>, _type: Option<crate::models::TransactionTypeFilter>) -> Result<crate::models::TransactionArray, Error> {
         let configuration: &configuration::Configuration = self.configuration.borrow();
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/currencies/{code}/transactions", configuration.base_path, code=crate::apis::urlencode(code));
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -395,7 +395,7 @@ impl CurrenciesApi for CurrenciesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/currencies", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::POST, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::POST, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -416,7 +416,7 @@ impl CurrenciesApi for CurrenciesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/currencies/{code}", configuration.base_path, code=crate::apis::urlencode(code));
-        let mut req_builder = client.request(reqwest::Method::PUT, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::PUT, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());

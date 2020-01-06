@@ -37,7 +37,7 @@ pub trait LinksApi {
     async fn get_link_type(&self, id: i32) -> Result<crate::models::LinkTypeSingle, Error>;
     async fn get_transaction_link(&self, id: i32) -> Result<crate::models::TransactionLinkSingle, Error>;
     async fn list_link_type(&self, page: Option<i32>) -> Result<crate::models::LinkTypeArray, Error>;
-    async fn list_transaction_by_link_type(&self, id: i32, page: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<&str>) -> Result<crate::models::TransactionArray, Error>;
+    async fn list_transaction_by_link_type(&self, id: i32, page: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<crate::models::TransactionTypeFilter>) -> Result<crate::models::TransactionArray, Error>;
     async fn list_transaction_link(&self, page: Option<i32>) -> Result<crate::models::TransactionLinkArray, Error>;
     async fn store_link_type(&self, link_type: crate::models::LinkType) -> Result<crate::models::LinkTypeSingle, Error>;
     async fn store_transaction_link(&self, transaction_link: crate::models::TransactionLink) -> Result<crate::models::TransactionLinkSingle, Error>;
@@ -52,7 +52,7 @@ impl LinksApi for LinksApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/link_types/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::DELETE, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::DELETE, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -73,7 +73,7 @@ impl LinksApi for LinksApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/transaction_links/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::DELETE, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::DELETE, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -94,7 +94,7 @@ impl LinksApi for LinksApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/link_types/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -114,7 +114,7 @@ impl LinksApi for LinksApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/transaction_links/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -134,7 +134,7 @@ impl LinksApi for LinksApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/link_types", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -152,12 +152,12 @@ impl LinksApi for LinksApiClient {
         Ok(client.execute(req).await?.error_for_status()?.json().await?)
     }
 
-    async fn list_transaction_by_link_type(&self, id: i32, page: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<&str>) -> Result<crate::models::TransactionArray, Error> {
+    async fn list_transaction_by_link_type(&self, id: i32, page: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<crate::models::TransactionTypeFilter>) -> Result<crate::models::TransactionArray, Error> {
         let configuration: &configuration::Configuration = self.configuration.borrow();
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/link_types/{id}/transactions", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -189,7 +189,7 @@ impl LinksApi for LinksApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/transaction_links", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -212,7 +212,7 @@ impl LinksApi for LinksApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/link_types", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::POST, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::POST, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -233,7 +233,7 @@ impl LinksApi for LinksApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/transaction_links", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::POST, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::POST, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -254,7 +254,7 @@ impl LinksApi for LinksApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/link_types/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::PUT, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::PUT, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -275,7 +275,7 @@ impl LinksApi for LinksApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/transaction_links/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::PUT, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::PUT, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());

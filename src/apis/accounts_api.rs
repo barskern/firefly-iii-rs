@@ -34,9 +34,9 @@ impl AccountsApiClient {
 pub trait AccountsApi {
     async fn delete_account(&self, id: i32) -> Result<(), Error>;
     async fn get_account(&self, id: i32, date: Option<String>) -> Result<crate::models::AccountSingle, Error>;
-    async fn list_account(&self, page: Option<i32>, date: Option<String>, _type: Option<&str>) -> Result<crate::models::AccountArray, Error>;
+    async fn list_account(&self, page: Option<i32>, date: Option<String>, _type: Option<crate::models::AccountTypeFilter>) -> Result<crate::models::AccountArray, Error>;
     async fn list_piggy_bank_by_account(&self, id: i32, page: Option<i32>) -> Result<crate::models::PiggyBankArray, Error>;
-    async fn list_transaction_by_account(&self, id: i32, page: Option<i32>, limit: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<&str>) -> Result<crate::models::TransactionArray, Error>;
+    async fn list_transaction_by_account(&self, id: i32, page: Option<i32>, limit: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<crate::models::TransactionTypeFilter>) -> Result<crate::models::TransactionArray, Error>;
     async fn store_account(&self, account: crate::models::Account) -> Result<crate::models::AccountSingle, Error>;
     async fn update_account(&self, id: i32, account: crate::models::Account) -> Result<crate::models::AccountSingle, Error>;
 }
@@ -48,7 +48,7 @@ impl AccountsApi for AccountsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/accounts/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::DELETE, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::DELETE, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -69,7 +69,7 @@ impl AccountsApi for AccountsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/accounts/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = date {
             req_builder = req_builder.query(&[("date", &s.to_string())]);
@@ -87,12 +87,12 @@ impl AccountsApi for AccountsApiClient {
         Ok(client.execute(req).await?.error_for_status()?.json().await?)
     }
 
-    async fn list_account(&self, page: Option<i32>, date: Option<String>, _type: Option<&str>) -> Result<crate::models::AccountArray, Error> {
+    async fn list_account(&self, page: Option<i32>, date: Option<String>, _type: Option<crate::models::AccountTypeFilter>) -> Result<crate::models::AccountArray, Error> {
         let configuration: &configuration::Configuration = self.configuration.borrow();
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/accounts", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -121,7 +121,7 @@ impl AccountsApi for AccountsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/accounts/{id}/piggy_banks", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -139,12 +139,12 @@ impl AccountsApi for AccountsApiClient {
         Ok(client.execute(req).await?.error_for_status()?.json().await?)
     }
 
-    async fn list_transaction_by_account(&self, id: i32, page: Option<i32>, limit: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<&str>) -> Result<crate::models::TransactionArray, Error> {
+    async fn list_transaction_by_account(&self, id: i32, page: Option<i32>, limit: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<crate::models::TransactionTypeFilter>) -> Result<crate::models::TransactionArray, Error> {
         let configuration: &configuration::Configuration = self.configuration.borrow();
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/accounts/{id}/transactions", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -179,7 +179,7 @@ impl AccountsApi for AccountsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/accounts", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::POST, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::POST, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -200,7 +200,7 @@ impl AccountsApi for AccountsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/accounts/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::PUT, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::PUT, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());

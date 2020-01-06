@@ -4,10 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_type** | Option<**String**> | Immutable value indicating the object type. | [optional]
-**id** | Option<**i32**> |  | [optional]
-**attributes** | Option<[**crate::models::PiggyBankEventAttributes**](PiggyBankEvent_attributes.md)> |  | [optional]
-**links** | Option<[**crate::models::ObjectLink**](ObjectLink.md)> |  | [optional]
+**created_at** | Option<**String**> |  | [optional]
+**updated_at** | Option<**String**> |  | [optional]
+**currency_id** | Option<**i32**> |  | [optional]
+**currency_code** | Option<**String**> |  | [optional]
+**currency_symbol** | Option<**String**> |  | [optional]
+**currency_decimal_places** | Option<**i32**> |  | [optional]
+**amount** | Option<**f64**> |  | [optional]
+**journal_id** | Option<**i32**> | The journal associated with the event. | [optional]
+**transaction_id** | Option<**i32**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

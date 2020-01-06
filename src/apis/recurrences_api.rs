@@ -35,7 +35,7 @@ pub trait RecurrencesApi {
     async fn delete_recurrence(&self, id: i32) -> Result<(), Error>;
     async fn get_recurrence(&self, id: i32) -> Result<crate::models::RecurrenceSingle, Error>;
     async fn list_recurrence(&self, page: Option<i32>) -> Result<crate::models::RecurrenceArray, Error>;
-    async fn list_transaction_by_recurrence(&self, id: i32, page: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<&str>) -> Result<crate::models::TransactionArray, Error>;
+    async fn list_transaction_by_recurrence(&self, id: i32, page: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<crate::models::TransactionTypeFilter>) -> Result<crate::models::TransactionArray, Error>;
     async fn store_recurrence(&self, recurrence: crate::models::Recurrence) -> Result<crate::models::RecurrenceSingle, Error>;
     async fn trigger_recurrence(&self, ) -> Result<(), Error>;
     async fn update_recurrence(&self, id: i32, recurrence: crate::models::Recurrence) -> Result<crate::models::RecurrenceSingle, Error>;
@@ -48,7 +48,7 @@ impl RecurrencesApi for RecurrencesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/recurrences/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::DELETE, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::DELETE, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -69,7 +69,7 @@ impl RecurrencesApi for RecurrencesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/recurrences/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -89,7 +89,7 @@ impl RecurrencesApi for RecurrencesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/recurrences", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -107,12 +107,12 @@ impl RecurrencesApi for RecurrencesApiClient {
         Ok(client.execute(req).await?.error_for_status()?.json().await?)
     }
 
-    async fn list_transaction_by_recurrence(&self, id: i32, page: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<&str>) -> Result<crate::models::TransactionArray, Error> {
+    async fn list_transaction_by_recurrence(&self, id: i32, page: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<crate::models::TransactionTypeFilter>) -> Result<crate::models::TransactionArray, Error> {
         let configuration: &configuration::Configuration = self.configuration.borrow();
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/recurrences/{id}/transactions", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -144,7 +144,7 @@ impl RecurrencesApi for RecurrencesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/recurrences", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::POST, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::POST, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -165,7 +165,7 @@ impl RecurrencesApi for RecurrencesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/recurrences/trigger", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::POST, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::POST, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -186,7 +186,7 @@ impl RecurrencesApi for RecurrencesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/recurrences/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::PUT, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::PUT, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());

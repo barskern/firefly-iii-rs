@@ -37,7 +37,7 @@ pub trait BillsApi {
     async fn list_attachment_by_bill(&self, id: i32, page: Option<i32>) -> Result<crate::models::AttachmentArray, Error>;
     async fn list_bill(&self, page: Option<i32>, start: Option<String>, end: Option<String>) -> Result<crate::models::BillArray, Error>;
     async fn list_rule_by_bill(&self, id: i32) -> Result<crate::models::RuleArray, Error>;
-    async fn list_transaction_by_bill(&self, id: i32, start: Option<String>, end: Option<String>, _type: Option<&str>) -> Result<crate::models::TransactionArray, Error>;
+    async fn list_transaction_by_bill(&self, id: i32, start: Option<String>, end: Option<String>, _type: Option<crate::models::TransactionTypeFilter>) -> Result<crate::models::TransactionArray, Error>;
     async fn store_bill(&self, bill: crate::models::Bill) -> Result<crate::models::BillSingle, Error>;
     async fn update_bill(&self, id: i32, bill: crate::models::Bill) -> Result<crate::models::BillSingle, Error>;
 }
@@ -49,7 +49,7 @@ impl BillsApi for BillsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/bills/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::DELETE, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::DELETE, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -70,7 +70,7 @@ impl BillsApi for BillsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/bills/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = start {
             req_builder = req_builder.query(&[("start", &s.to_string())]);
@@ -96,7 +96,7 @@ impl BillsApi for BillsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/bills/{id}/attachments", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -119,7 +119,7 @@ impl BillsApi for BillsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/bills", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -148,7 +148,7 @@ impl BillsApi for BillsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/bills/{id}/rules", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -163,12 +163,12 @@ impl BillsApi for BillsApiClient {
         Ok(client.execute(req).await?.error_for_status()?.json().await?)
     }
 
-    async fn list_transaction_by_bill(&self, id: i32, start: Option<String>, end: Option<String>, _type: Option<&str>) -> Result<crate::models::TransactionArray, Error> {
+    async fn list_transaction_by_bill(&self, id: i32, start: Option<String>, end: Option<String>, _type: Option<crate::models::TransactionTypeFilter>) -> Result<crate::models::TransactionArray, Error> {
         let configuration: &configuration::Configuration = self.configuration.borrow();
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/bills/{id}/transactions", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = start {
             req_builder = req_builder.query(&[("start", &s.to_string())]);
@@ -197,7 +197,7 @@ impl BillsApi for BillsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/bills", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::POST, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::POST, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -218,7 +218,7 @@ impl BillsApi for BillsApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/bills/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::PUT, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::PUT, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());

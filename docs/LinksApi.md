@@ -184,7 +184,7 @@ Name | Type | Description  | Required | Notes
 **page** | Option<**i32**> | Page number. The default pagination is per 50 items. |  |
 **start** | Option<**String**> | A date formatted YYYY-MM-DD, to limit the results.  |  |
 **end** | Option<**String**> | A date formatted YYYY-MM-DD, to limit the results.  |  |
-**_type** | Option<**String**> | Optional filter on the transaction type(s) returned. |  |
+**_type** | Option<[**crate::models::TransactionTypeFilter**](.md)> | Optional filter on the transaction type(s) returned. |  |
 
 ### Return type
 

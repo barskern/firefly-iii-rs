@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **label** | Option<**String**> | This is the title of the current set. It can refer to an account, a budget or another object (by name). | [optional]
-**currency_id** | Option<**f32**> | The currency ID of the currency associated to the data in the entries. | [optional]
+**currency_id** | Option<**i32**> | The currency ID of the currency associated to the data in the entries. | [optional]
 **currency_code** | Option<**String**> |  | [optional]
 **currency_symbol** | Option<**String**> |  | [optional]
 **currency_decimal_places** | Option<**i32**> | Number of decimals for the currency associated to the data in the entries. | [optional]

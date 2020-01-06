@@ -21,7 +21,7 @@ pub struct TransactionSplit {
     /// ID of the underlying transaction journal. Each transaction consists of a transaction group (see the top ID) and one or more journals making up the splits of the transaction. 
     #[serde(rename = "transaction_journal_id", skip_serializing_if = "Option::is_none")]
     pub transaction_journal_id: Option<i32>,
-    /// Type of transaction. expense cannot be written.
+    /// Type of transaction.
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
     pub _type: Option<Type>,
     /// Date of the transaction
@@ -77,24 +77,24 @@ pub struct TransactionSplit {
     pub category_name: Option<String>,
     /// ID of the source account. For a withdrawal or a transfer, this must always be an asset account. For deposits, this must be a revenue account.
     #[serde(rename = "source_id")]
-    pub source_id: i32,
+    pub source_id: Option<i32>,
     /// Name of the source account. For a withdrawal or a transfer, this must always be an asset account. For deposits, this must be a revenue account. Can be used instead of the source_id. If the transaction is a deposit, the source_name can be filled in freely: the account will be created based on the name.
     #[serde(rename = "source_name", skip_serializing_if = "Option::is_none")]
     pub source_name: Option<String>,
     #[serde(rename = "source_iban", skip_serializing_if = "Option::is_none")]
     pub source_iban: Option<String>,
     #[serde(rename = "source_type", skip_serializing_if = "Option::is_none")]
-    pub source_type: Option<SourceType>,
+    pub source_type: Option<crate::models::AccountTypeProperty>,
     /// ID of the destination account. For a deposit or a transfer, this must always be an asset account. For withdrawals this must be an expense account.
     #[serde(rename = "destination_id")]
-    pub destination_id: i32,
+    pub destination_id: Option<i32>,
     /// Name of the destination account. You can submit the name instead of the ID. For everything except transfers, the account will be auto-generated if unknown, so submitting a name is enough.
     #[serde(rename = "destination_name", skip_serializing_if = "Option::is_none")]
     pub destination_name: Option<String>,
     #[serde(rename = "destination_iban", skip_serializing_if = "Option::is_none")]
     pub destination_iban: Option<String>,
     #[serde(rename = "destination_type", skip_serializing_if = "Option::is_none")]
-    pub destination_type: Option<DestinationType>,
+    pub destination_type: Option<crate::models::AccountTypeProperty>,
     /// If the transaction has been reconciled already. When you set this, the amount can no longer be edited by the user.
     #[serde(rename = "reconciled", skip_serializing_if = "Option::is_none")]
     pub reconciled: Option<bool>,
@@ -172,7 +172,7 @@ pub struct TransactionSplit {
 }
 
 impl TransactionSplit {
-    pub fn new(date: String, amount: f64, description: String, source_id: i32, destination_id: i32) -> TransactionSplit {
+    pub fn new(date: String, amount: f64, description: String, source_id: Option<i32>, destination_id: Option<i32>) -> TransactionSplit {
         TransactionSplit {
             user: None,
             transaction_journal_id: None,
@@ -234,7 +234,7 @@ impl TransactionSplit {
     }
 }
 
-/// Type of transaction. expense cannot be written.
+/// Type of transaction.
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub enum Type {
     #[serde(rename = "withdrawal")]
@@ -245,65 +245,7 @@ pub enum Type {
     Deposit,
     #[serde(rename = "transfer")]
     Transfer,
-    #[serde(rename = "opening-balance")]
-    OpeningBalance,
     #[serde(rename = "reconciliation")]
     Reconciliation,
-}
-/// 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
-pub enum SourceType {
-    #[serde(rename = "Default account")]
-    DefaultAccount,
-    #[serde(rename = "Cash account")]
-    CashAccount,
-    #[serde(rename = "Asset account")]
-    AssetAccount,
-    #[serde(rename = "Expense account")]
-    ExpenseAccount,
-    #[serde(rename = "Revenue account")]
-    RevenueAccount,
-    #[serde(rename = "Initial balance account")]
-    InitialBalanceAccount,
-    #[serde(rename = "Beneficiary account")]
-    BeneficiaryAccount,
-    #[serde(rename = "Import account")]
-    ImportAccount,
-    #[serde(rename = "Reconciliation account")]
-    ReconciliationAccount,
-    #[serde(rename = "Loan")]
-    Loan,
-    #[serde(rename = "Debt")]
-    Debt,
-    #[serde(rename = "Mortgage")]
-    Mortgage,
-}
-/// 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
-pub enum DestinationType {
-    #[serde(rename = "Default account")]
-    DefaultAccount,
-    #[serde(rename = "Cash account")]
-    CashAccount,
-    #[serde(rename = "Asset account")]
-    AssetAccount,
-    #[serde(rename = "Expense account")]
-    ExpenseAccount,
-    #[serde(rename = "Revenue account")]
-    RevenueAccount,
-    #[serde(rename = "Initial balance account")]
-    InitialBalanceAccount,
-    #[serde(rename = "Beneficiary account")]
-    BeneficiaryAccount,
-    #[serde(rename = "Import account")]
-    ImportAccount,
-    #[serde(rename = "Reconciliation account")]
-    ReconciliationAccount,
-    #[serde(rename = "Loan")]
-    Loan,
-    #[serde(rename = "Debt")]
-    Debt,
-    #[serde(rename = "Mortgage")]
-    Mortgage,
 }
 

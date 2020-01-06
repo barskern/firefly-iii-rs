@@ -78,8 +78,8 @@ pub enum Type {
     AppendDescription,
     #[serde(rename = "prepend_description")]
     PrependDescription,
-    #[serde(rename = "aet_source_account")]
-    AetSourceAccount,
+    #[serde(rename = "set_source_account")]
+    SetSourceAccount,
     #[serde(rename = "set_destination_account")]
     SetDestinationAccount,
     #[serde(rename = "set_notes")]

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user** | Option<**i32**> | User ID | [optional][readonly]
 **transaction_journal_id** | Option<**i32**> | ID of the underlying transaction journal. Each transaction consists of a transaction group (see the top ID) and one or more journals making up the splits of the transaction.  | [optional][readonly]
-**_type** | Option<**String**> | Type of transaction. expense cannot be written. | [optional]
+**_type** | Option<**String**> | Type of transaction. | [optional]
 **date** | [**String**](string.md) | Date of the transaction | 
 **amount** | **f64** | Amount of the transaction. | 
 **description** | **String** | Description of the transaction. Will only be used if more than one split is submitted. | 
@@ -25,14 +25,14 @@ Name | Type | Description | Notes
 **budget_name** | Option<**String**> | The name of the budget to be used. If the budget name is unknown, the ID will be used or the value will be ignored. | [optional][readonly]
 **category_id** | Option<**i32**> | The category ID for this transaction. | [optional]
 **category_name** | Option<**String**> | The name of the category to be used. If the category is unknown, it will be created. If the ID and the name point to different categories, the ID overrules the name. | [optional]
-**source_id** | **i32** | ID of the source account. For a withdrawal or a transfer, this must always be an asset account. For deposits, this must be a revenue account. | 
+**source_id** | Option<**i32**> | ID of the source account. For a withdrawal or a transfer, this must always be an asset account. For deposits, this must be a revenue account. | 
 **source_name** | Option<**String**> | Name of the source account. For a withdrawal or a transfer, this must always be an asset account. For deposits, this must be a revenue account. Can be used instead of the source_id. If the transaction is a deposit, the source_name can be filled in freely: the account will be created based on the name. | [optional]
 **source_iban** | Option<**String**> |  | [optional][readonly]
-**source_type** | Option<**String**> |  | [optional][readonly]
-**destination_id** | **i32** | ID of the destination account. For a deposit or a transfer, this must always be an asset account. For withdrawals this must be an expense account. | 
+**source_type** | Option<[**crate::models::AccountTypeProperty**](AccountTypeProperty.md)> |  | [optional]
+**destination_id** | Option<**i32**> | ID of the destination account. For a deposit or a transfer, this must always be an asset account. For withdrawals this must be an expense account. | 
 **destination_name** | Option<**String**> | Name of the destination account. You can submit the name instead of the ID. For everything except transfers, the account will be auto-generated if unknown, so submitting a name is enough. | [optional]
 **destination_iban** | Option<**String**> |  | [optional][readonly]
-**destination_type** | Option<**String**> |  | [optional][readonly]
+**destination_type** | Option<[**crate::models::AccountTypeProperty**](AccountTypeProperty.md)> |  | [optional]
 **reconciled** | Option<**bool**> | If the transaction has been reconciled already. When you set this, the amount can no longer be edited by the user. | [optional]
 **piggy_bank_id** | Option<**i32**> | Optional. Use either this or the piggy_bank_name | [optional]
 **piggy_bank_name** | Option<**String**> | Optional. Use either this or the piggy_bank_id | [optional]

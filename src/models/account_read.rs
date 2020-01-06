@@ -16,20 +16,20 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct AccountRead {
     /// Immutable value
-    #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub _type: Option<String>,
-    #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
-    #[serde(rename = "attributes", skip_serializing_if = "Option::is_none")]
-    pub attributes: Option<crate::models::Account>,
+    #[serde(rename = "type")]
+    pub _type: String,
+    #[serde(rename = "id")]
+    pub id: String,
+    #[serde(rename = "attributes")]
+    pub attributes: crate::models::Account,
 }
 
 impl AccountRead {
-    pub fn new() -> AccountRead {
+    pub fn new(_type: String, id: String, attributes: crate::models::Account) -> AccountRead {
         AccountRead {
-            _type: None,
-            id: None,
-            attributes: None,
+            _type,
+            id,
+            attributes,
         }
     }
 }

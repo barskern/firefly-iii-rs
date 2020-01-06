@@ -35,7 +35,7 @@ pub trait CategoriesApi {
     async fn delete_category(&self, id: i32) -> Result<(), Error>;
     async fn get_category(&self, id: i32) -> Result<crate::models::CategorySingle, Error>;
     async fn list_category(&self, page: Option<i32>) -> Result<crate::models::CategoryArray, Error>;
-    async fn list_transaction_by_category(&self, id: i32, page: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<&str>) -> Result<crate::models::TransactionArray, Error>;
+    async fn list_transaction_by_category(&self, id: i32, page: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<crate::models::TransactionTypeFilter>) -> Result<crate::models::TransactionArray, Error>;
     async fn store_category(&self, category: crate::models::Category) -> Result<crate::models::CategorySingle, Error>;
     async fn update_category(&self, id: i32, category: crate::models::Category) -> Result<crate::models::CategorySingle, Error>;
 }
@@ -47,7 +47,7 @@ impl CategoriesApi for CategoriesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/categories/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::DELETE, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::DELETE, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -68,7 +68,7 @@ impl CategoriesApi for CategoriesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/categories/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -88,7 +88,7 @@ impl CategoriesApi for CategoriesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/categories", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -106,12 +106,12 @@ impl CategoriesApi for CategoriesApiClient {
         Ok(client.execute(req).await?.error_for_status()?.json().await?)
     }
 
-    async fn list_transaction_by_category(&self, id: i32, page: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<&str>) -> Result<crate::models::TransactionArray, Error> {
+    async fn list_transaction_by_category(&self, id: i32, page: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<crate::models::TransactionTypeFilter>) -> Result<crate::models::TransactionArray, Error> {
         let configuration: &configuration::Configuration = self.configuration.borrow();
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/categories/{id}/transactions", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -143,7 +143,7 @@ impl CategoriesApi for CategoriesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/categories", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::POST, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::POST, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -164,7 +164,7 @@ impl CategoriesApi for CategoriesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/categories/{id}", configuration.base_path, id=id);
-        let mut req_builder = client.request(reqwest::Method::PUT, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::PUT, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());

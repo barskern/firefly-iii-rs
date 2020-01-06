@@ -4,19 +4,19 @@ All URIs are relative to *https://demo.firefly-iii.org*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_tag**](TagsApi.md#delete_tag) | **DELETE** /api/v1/tags/{tag_id} | Delete an tag.
-[**get_tag**](TagsApi.md#get_tag) | **GET** /api/v1/tags/{tag_id} | Get a single tag.
+[**delete_tag**](TagsApi.md#delete_tag) | **DELETE** /api/v1/tags/{tag} | Delete an tag.
+[**get_tag**](TagsApi.md#get_tag) | **GET** /api/v1/tags/{tag} | Get a single tag.
 [**get_tag_cloud**](TagsApi.md#get_tag_cloud) | **GET** /api/v1/tag-cloud | Returns a basic tag cloud.
 [**list_tag**](TagsApi.md#list_tag) | **GET** /api/v1/tags | List all tags.
-[**list_transaction_by_tag**](TagsApi.md#list_transaction_by_tag) | **GET** /api/v1/tags/{tag_id}/transactions | List all transactions with this tag.
+[**list_transaction_by_tag**](TagsApi.md#list_transaction_by_tag) | **GET** /api/v1/tags/{tag}/transactions | List all transactions with this tag.
 [**store_tag**](TagsApi.md#store_tag) | **POST** /api/v1/tags | Store a new tag
-[**update_tag**](TagsApi.md#update_tag) | **PUT** /api/v1/tags/{tag_id} | Update existing tag.
+[**update_tag**](TagsApi.md#update_tag) | **PUT** /api/v1/tags/{tag} | Update existing tag.
 
 
 
 ## delete_tag
 
-> delete_tag(tag_id)
+> delete_tag(tag)
 Delete an tag.
 
 Delete an tag.
@@ -26,7 +26,7 @@ Delete an tag.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**tag_id** | **String** | Either the tag itself or the tag ID. | [required] |
+**tag** | **String** | Either the tag itself or the tag ID. | [required] |
 
 ### Return type
 
@@ -46,7 +46,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_tag
 
-> crate::models::TagSingle get_tag(tag_id, page)
+> crate::models::TagSingle get_tag(tag, page)
 Get a single tag.
 
 Get a single tag.
@@ -56,7 +56,7 @@ Get a single tag.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**tag_id** | **String** | Either the tag itself or the tag ID. | [required] |
+**tag** | **String** | Either the tag itself or the tag ID. | [required] |
 **page** | Option<**i32**> | Page number |  |
 
 ### Return type
@@ -138,7 +138,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_transaction_by_tag
 
-> crate::models::TransactionArray list_transaction_by_tag(tag_id, page, start, end, _type)
+> crate::models::TransactionArray list_transaction_by_tag(tag, page, start, end, _type)
 List all transactions with this tag.
 
 List all transactions with this tag.
@@ -148,11 +148,11 @@ List all transactions with this tag.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**tag_id** | **String** | Either the tag itself or the tag ID. | [required] |
+**tag** | **String** | Either the tag itself or the tag ID. | [required] |
 **page** | Option<**i32**> | Page number. The default pagination is 50. |  |
 **start** | Option<**String**> | A date formatted YYYY-MM-DD. This is the start date of the selected range (inclusive).  |  |
 **end** | Option<**String**> | A date formatted YYYY-MM-DD. This is the end date of the selected range (inclusive).  |  |
-**_type** | Option<**String**> | Optional filter on the transaction type(s) returned. |  |
+**_type** | Option<[**crate::models::TransactionTypeFilter**](.md)> | Optional filter on the transaction type(s) returned. |  |
 
 ### Return type
 
@@ -172,7 +172,7 @@ Name | Type | Description  | Required | Notes
 
 ## store_tag
 
-> crate::models::TagSingle store_tag(tag)
+> crate::models::TagSingle store_tag(tag_model)
 Store a new tag
 
 Creates a new tag. The data required can be submitted as a JSON body or as a list of parameters.
@@ -182,7 +182,7 @@ Creates a new tag. The data required can be submitted as a JSON body or as a lis
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**tag** | [**Tag**](Tag.md) | JSON array or key=value pairs with the necessary tag information. See the model for the exact specifications. | [required] |
+**tag_model** | [**TagModel**](TagModel.md) | JSON array or key=value pairs with the necessary tag information. See the model for the exact specifications. | [required] |
 
 ### Return type
 
@@ -202,7 +202,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_tag
 
-> crate::models::TagSingle update_tag(tag_id, tag)
+> crate::models::TagSingle update_tag(tag, tag_model)
 Update existing tag.
 
 Update existing tag.
@@ -212,8 +212,8 @@ Update existing tag.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**tag_id** | **String** | Either the tag itself or the tag ID. | [required] |
-**tag** | [**Tag**](Tag.md) | JSON array with updated tag information. See the model for the exact specifications. | [required] |
+**tag** | **String** | Either the tag itself or the tag ID. | [required] |
+**tag_model** | [**TagModel**](TagModel.md) | JSON array with updated tag information. See the model for the exact specifications. | [required] |
 
 ### Return type
 

@@ -16,23 +16,23 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct LinkTypeRead {
     /// Immutable value
-    #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub _type: Option<String>,
-    #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
-    #[serde(rename = "attributes", skip_serializing_if = "Option::is_none")]
-    pub attributes: Option<crate::models::LinkType>,
-    #[serde(rename = "links", skip_serializing_if = "Option::is_none")]
-    pub links: Option<crate::models::ObjectLink>,
+    #[serde(rename = "type")]
+    pub _type: String,
+    #[serde(rename = "id")]
+    pub id: String,
+    #[serde(rename = "attributes")]
+    pub attributes: crate::models::LinkType,
+    #[serde(rename = "links")]
+    pub links: crate::models::ObjectLink,
 }
 
 impl LinkTypeRead {
-    pub fn new() -> LinkTypeRead {
+    pub fn new(_type: String, id: String, attributes: crate::models::LinkType, links: crate::models::ObjectLink) -> LinkTypeRead {
         LinkTypeRead {
-            _type: None,
-            id: None,
-            attributes: None,
-            links: None,
+            _type,
+            id,
+            attributes,
+            links,
         }
     }
 }

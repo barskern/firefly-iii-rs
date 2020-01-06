@@ -66,7 +66,7 @@ pub struct RecurrenceTransaction {
     #[serde(rename = "source_iban", skip_serializing_if = "Option::is_none")]
     pub source_iban: Option<String>,
     #[serde(rename = "source_type", skip_serializing_if = "Option::is_none")]
-    pub source_type: Option<SourceType>,
+    pub source_type: Option<crate::models::AccountTypeProperty>,
     /// ID of the destination account. Submit either this or destination_name.
     #[serde(rename = "destination_id", skip_serializing_if = "Option::is_none")]
     pub destination_id: Option<i32>,
@@ -76,7 +76,7 @@ pub struct RecurrenceTransaction {
     #[serde(rename = "destination_iban", skip_serializing_if = "Option::is_none")]
     pub destination_iban: Option<String>,
     #[serde(rename = "destination_type", skip_serializing_if = "Option::is_none")]
-    pub destination_type: Option<DestinationType>,
+    pub destination_type: Option<crate::models::AccountTypeProperty>,
     /// Array of tags.
     #[serde(rename = "tags", skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<String>>,
@@ -121,60 +121,4 @@ impl RecurrenceTransaction {
     }
 }
 
-/// 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
-pub enum SourceType {
-    #[serde(rename = "Default account")]
-    DefaultAccount,
-    #[serde(rename = "Cash account")]
-    CashAccount,
-    #[serde(rename = "Asset account")]
-    AssetAccount,
-    #[serde(rename = "Expense account")]
-    ExpenseAccount,
-    #[serde(rename = "Revenue account")]
-    RevenueAccount,
-    #[serde(rename = "Initial balance account")]
-    InitialBalanceAccount,
-    #[serde(rename = "Beneficiary account")]
-    BeneficiaryAccount,
-    #[serde(rename = "Import account")]
-    ImportAccount,
-    #[serde(rename = "Reconciliation account")]
-    ReconciliationAccount,
-    #[serde(rename = "Loan")]
-    Loan,
-    #[serde(rename = "Debt")]
-    Debt,
-    #[serde(rename = "Mortgage")]
-    Mortgage,
-}
-/// 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
-pub enum DestinationType {
-    #[serde(rename = "Default account")]
-    DefaultAccount,
-    #[serde(rename = "Cash account")]
-    CashAccount,
-    #[serde(rename = "Asset account")]
-    AssetAccount,
-    #[serde(rename = "Expense account")]
-    ExpenseAccount,
-    #[serde(rename = "Revenue account")]
-    RevenueAccount,
-    #[serde(rename = "Initial balance account")]
-    InitialBalanceAccount,
-    #[serde(rename = "Beneficiary account")]
-    BeneficiaryAccount,
-    #[serde(rename = "Import account")]
-    ImportAccount,
-    #[serde(rename = "Reconciliation account")]
-    ReconciliationAccount,
-    #[serde(rename = "Loan")]
-    Loan,
-    #[serde(rename = "Debt")]
-    Debt,
-    #[serde(rename = "Mortgage")]
-    Mortgage,
-}
 

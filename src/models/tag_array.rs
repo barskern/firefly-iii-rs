@@ -15,20 +15,20 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct TagArray {
-    #[serde(rename = "data", skip_serializing_if = "Option::is_none")]
-    pub data: Option<Vec<crate::models::TagRead>>,
-    #[serde(rename = "meta", skip_serializing_if = "Option::is_none")]
-    pub meta: Option<crate::models::Meta>,
-    #[serde(rename = "links", skip_serializing_if = "Option::is_none")]
-    pub links: Option<crate::models::PageLink>,
+    #[serde(rename = "data")]
+    pub data: Vec<crate::models::TagRead>,
+    #[serde(rename = "meta")]
+    pub meta: crate::models::Meta,
+    #[serde(rename = "links")]
+    pub links: crate::models::PageLink,
 }
 
 impl TagArray {
-    pub fn new() -> TagArray {
+    pub fn new(data: Vec<crate::models::TagRead>, meta: crate::models::Meta, links: crate::models::PageLink) -> TagArray {
         TagArray {
-            data: None,
-            meta: None,
-            links: None,
+            data,
+            meta,
+            links,
         }
     }
 }

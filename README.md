@@ -145,19 +145,19 @@ Class | Method | HTTP request | Description
 *RulesApi* | [**test_rule**](docs/RulesApi.md#test_rule) | **GET** /api/v1/rules/{id}/test | Test which transactions would be hit by the rule. No changes will be made.
 *RulesApi* | [**update_rule**](docs/RulesApi.md#update_rule) | **PUT** /api/v1/rules/{id} | Update existing rule.
 *SummaryApi* | [**get_basic_summary**](docs/SummaryApi.md#get_basic_summary) | **GET** /api/v1/summary/basic | Returns basic sums of the users data.
-*TagsApi* | [**delete_tag**](docs/TagsApi.md#delete_tag) | **DELETE** /api/v1/tags/{tag_id} | Delete an tag.
-*TagsApi* | [**get_tag**](docs/TagsApi.md#get_tag) | **GET** /api/v1/tags/{tag_id} | Get a single tag.
+*TagsApi* | [**delete_tag**](docs/TagsApi.md#delete_tag) | **DELETE** /api/v1/tags/{tag} | Delete an tag.
+*TagsApi* | [**get_tag**](docs/TagsApi.md#get_tag) | **GET** /api/v1/tags/{tag} | Get a single tag.
 *TagsApi* | [**get_tag_cloud**](docs/TagsApi.md#get_tag_cloud) | **GET** /api/v1/tag-cloud | Returns a basic tag cloud.
 *TagsApi* | [**list_tag**](docs/TagsApi.md#list_tag) | **GET** /api/v1/tags | List all tags.
-*TagsApi* | [**list_transaction_by_tag**](docs/TagsApi.md#list_transaction_by_tag) | **GET** /api/v1/tags/{tag_id}/transactions | List all transactions with this tag.
+*TagsApi* | [**list_transaction_by_tag**](docs/TagsApi.md#list_transaction_by_tag) | **GET** /api/v1/tags/{tag}/transactions | List all transactions with this tag.
 *TagsApi* | [**store_tag**](docs/TagsApi.md#store_tag) | **POST** /api/v1/tags | Store a new tag
-*TagsApi* | [**update_tag**](docs/TagsApi.md#update_tag) | **PUT** /api/v1/tags/{tag_id} | Update existing tag.
+*TagsApi* | [**update_tag**](docs/TagsApi.md#update_tag) | **PUT** /api/v1/tags/{tag} | Update existing tag.
 *TransactionsApi* | [**delete_transaction**](docs/TransactionsApi.md#delete_transaction) | **DELETE** /api/v1/transactions/{id} | Delete a transaction.
 *TransactionsApi* | [**get_transaction**](docs/TransactionsApi.md#get_transaction) | **GET** /api/v1/transactions/{id} | Get a single transaction.
 *TransactionsApi* | [**get_transaction_by_journal**](docs/TransactionsApi.md#get_transaction_by_journal) | **GET** /api/v1/transaction-journals/{id} | Get a single transaction, based on one of the underlying transaction journals.
 *TransactionsApi* | [**list_attachment_by_transaction**](docs/TransactionsApi.md#list_attachment_by_transaction) | **GET** /api/v1/transactions/{id}/attachments | Lists all attachments.
 *TransactionsApi* | [**list_event_by_transaction**](docs/TransactionsApi.md#list_event_by_transaction) | **GET** /api/v1/transactions/{id}/piggy_bank_events | Lists all piggy bank events.
-*TransactionsApi* | [**list_transaction**](docs/TransactionsApi.md#list_transaction) | **GET** /api/v1/transactions | List all the user's transactions.
+*TransactionsApi* | [**list_transaction**](docs/TransactionsApi.md#list_transaction) | **GET** /api/v1/transactions | List all the user's transactions. 
 *TransactionsApi* | [**store_transaction**](docs/TransactionsApi.md#store_transaction) | **POST** /api/v1/transactions | Store a new transaction
 *TransactionsApi* | [**update_transaction**](docs/TransactionsApi.md#update_transaction) | **PUT** /api/v1/transactions/{id} | Update existing transaction.
 *UsersApi* | [**delete_user**](docs/UsersApi.md#delete_user) | **DELETE** /api/v1/users/{id} | Delete a user.
@@ -173,6 +173,8 @@ Class | Method | HTTP request | Description
  - [AccountArray](docs/AccountArray.md)
  - [AccountRead](docs/AccountRead.md)
  - [AccountSingle](docs/AccountSingle.md)
+ - [AccountTypeFilter](docs/AccountTypeFilter.md)
+ - [AccountTypeProperty](docs/AccountTypeProperty.md)
  - [Attachment](docs/Attachment.md)
  - [AttachmentArray](docs/AttachmentArray.md)
  - [AttachmentRead](docs/AttachmentRead.md)
@@ -231,7 +233,7 @@ Class | Method | HTTP request | Description
  - [PiggyBankArray](docs/PiggyBankArray.md)
  - [PiggyBankEvent](docs/PiggyBankEvent.md)
  - [PiggyBankEventArray](docs/PiggyBankEventArray.md)
- - [PiggyBankEventAttributes](docs/PiggyBankEventAttributes.md)
+ - [PiggyBankEventRead](docs/PiggyBankEventRead.md)
  - [PiggyBankRead](docs/PiggyBankRead.md)
  - [PiggyBankSingle](docs/PiggyBankSingle.md)
  - [Preference](docs/Preference.md)
@@ -256,10 +258,10 @@ Class | Method | HTTP request | Description
  - [RuleTrigger](docs/RuleTrigger.md)
  - [SystemInfo](docs/SystemInfo.md)
  - [SystemInfoData](docs/SystemInfoData.md)
- - [Tag](docs/Tag.md)
  - [TagArray](docs/TagArray.md)
  - [TagCloud](docs/TagCloud.md)
  - [TagCloudTag](docs/TagCloudTag.md)
+ - [TagModel](docs/TagModel.md)
  - [TagRead](docs/TagRead.md)
  - [TagSingle](docs/TagSingle.md)
  - [Transaction](docs/Transaction.md)
@@ -271,6 +273,7 @@ Class | Method | HTTP request | Description
  - [TransactionRead](docs/TransactionRead.md)
  - [TransactionSingle](docs/TransactionSingle.md)
  - [TransactionSplit](docs/TransactionSplit.md)
+ - [TransactionTypeFilter](docs/TransactionTypeFilter.md)
  - [User](docs/User.md)
  - [UserArray](docs/UserArray.md)
  - [UserRead](docs/UserRead.md)
@@ -288,3 +291,4 @@ cargo doc --open
 ## Author
 
 thegrumpydictator@gmail.com
+

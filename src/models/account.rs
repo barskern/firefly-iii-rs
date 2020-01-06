@@ -37,7 +37,7 @@ pub struct Account {
     #[serde(rename = "virtual_balance", skip_serializing_if = "Option::is_none")]
     pub virtual_balance: Option<f64>,
     #[serde(rename = "current_balance", skip_serializing_if = "Option::is_none")]
-    pub current_balance: Option<f32>,
+    pub current_balance: Option<f64>,
     #[serde(rename = "current_balance_date", skip_serializing_if = "Option::is_none")]
     pub current_balance_date: Option<String>,
     /// Use either currency_id or currency_code. Defaults to the user's default currency.

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **opening_balance** | Option<**f64**> |  | [optional]
 **opening_balance_date** | Option<[**String**](string.md)> |  | [optional]
 **virtual_balance** | Option<**f64**> |  | [optional]
-**current_balance** | Option<**f32**> |  | [optional][readonly]
+**current_balance** | Option<**f64**> |  | [optional][readonly]
 **current_balance_date** | Option<[**String**](string.md)> |  | [optional][readonly]
 **currency_id** | Option<**i32**> | Use either currency_id or currency_code. Defaults to the user's default currency. | [optional]
 **currency_code** | Option<**String**> | Use either currency_id or currency_code. Defaults to the user's default currency. | [optional]
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **currency_decimal_places** | Option<**i32**> |  | [optional][readonly]
 **active** | Option<**bool**> | If omitted, defaults to true. | [optional]
 **include_net_worth** | Option<**bool**> | If omitted, defaults to true. | [optional]
-**account_role** | **String** | Is only mandatory when the type is asset. | 
+**account_role** | Option<**String**> | Is only mandatory when the type is asset. | [optional]
 **credit_card_type** | Option<**String**> | Mandatory when the account_role is ccAsset. Can only be monthlyFull. | [optional]
 **monthly_payment_date** | Option<[**String**](string.md)> | Mandatory when the account_role is ccAsset. Moment at which CC payment installments are asked for by the bank. | [optional]
 **liability_type** | Option<**String**> | Mandatory when type is liability. Specifies the exact type. | [optional]

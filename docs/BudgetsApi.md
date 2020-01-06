@@ -220,7 +220,7 @@ Name | Type | Description  | Required | Notes
 **page** | Option<**i32**> | Page number. The default pagination is 50. |  |
 **start** | Option<**String**> | A date formatted YYYY-MM-DD.  |  |
 **end** | Option<**String**> | A date formatted YYYY-MM-DD.  |  |
-**_type** | Option<**String**> | Optional filter on the transaction type(s) returned |  |
+**_type** | Option<[**crate::models::TransactionTypeFilter**](.md)> | Optional filter on the transaction type(s) returned |  |
 
 ### Return type
 
@@ -252,7 +252,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | The ID of the requested budget limit. | [required] |
 **page** | Option<**i32**> | Page number. The default pagination is 50. |  |
-**_type** | Option<**String**> | Optional filter on the transaction type(s) returned |  |
+**_type** | Option<[**crate::models::TransactionTypeFilter**](.md)> | Optional filter on the transaction type(s) returned |  |
 
 ### Return type
 

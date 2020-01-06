@@ -34,7 +34,7 @@ impl ImportApiClient {
 pub trait ImportApi {
     async fn get_import(&self, key: &str) -> Result<crate::models::ImportJobSingle, Error>;
     async fn list_import(&self, page: Option<i32>) -> Result<crate::models::ImportJobArray, Error>;
-    async fn list_transaction_by_import(&self, key: &str, page: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<&str>) -> Result<crate::models::TransactionArray, Error>;
+    async fn list_transaction_by_import(&self, key: &str, page: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<crate::models::TransactionTypeFilter>) -> Result<crate::models::TransactionArray, Error>;
 }
 
 #[async_trait]
@@ -44,7 +44,7 @@ impl ImportApi for ImportApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/import/{key}", configuration.base_path, key=crate::apis::urlencode(key));
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -64,7 +64,7 @@ impl ImportApi for ImportApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/import/list", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);
@@ -82,12 +82,12 @@ impl ImportApi for ImportApiClient {
         Ok(client.execute(req).await?.error_for_status()?.json().await?)
     }
 
-    async fn list_transaction_by_import(&self, key: &str, page: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<&str>) -> Result<crate::models::TransactionArray, Error> {
+    async fn list_transaction_by_import(&self, key: &str, page: Option<i32>, start: Option<String>, end: Option<String>, _type: Option<crate::models::TransactionTypeFilter>) -> Result<crate::models::TransactionArray, Error> {
         let configuration: &configuration::Configuration = self.configuration.borrow();
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/import/{key}/transactions", configuration.base_path, key=crate::apis::urlencode(key));
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = page {
             req_builder = req_builder.query(&[("page", &s.to_string())]);

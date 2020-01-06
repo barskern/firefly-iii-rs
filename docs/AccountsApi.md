@@ -89,7 +89,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **page** | Option<**i32**> | Page number. The default pagination is per 50 items. |  |
 **date** | Option<**String**> | A date formatted YYYY-MM-DD. When added to the request, Firefly III will show the account's balance on that day.  |  |
-**_type** | Option<**String**> | Optional filter on the account type(s) returned |  |
+**_type** | Option<[**crate::models::AccountTypeFilter**](.md)> | Optional filter on the account type(s) returned |  |
 
 ### Return type
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Required | Notes
 **limit** | Option<**i32**> | Limits the number of results on one page. |  |
 **start** | Option<**String**> | A date formatted YYYY-MM-DD.  |  |
 **end** | Option<**String**> | A date formatted YYYY-MM-DD.  |  |
-**_type** | Option<**String**> | Optional filter on the transaction type(s) returned. |  |
+**_type** | Option<[**crate::models::TransactionTypeFilter**](.md)> | Optional filter on the transaction type(s) returned. |  |
 
 ### Return type
 

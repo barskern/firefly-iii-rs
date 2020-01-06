@@ -15,24 +15,39 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct PiggyBankEvent {
-    /// Immutable value indicating the object type.
-    #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub _type: Option<String>,
-    #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<i32>,
-    #[serde(rename = "attributes", skip_serializing_if = "Option::is_none")]
-    pub attributes: Option<crate::models::PiggyBankEventAttributes>,
-    #[serde(rename = "links", skip_serializing_if = "Option::is_none")]
-    pub links: Option<crate::models::ObjectLink>,
+    #[serde(rename = "created_at", skip_serializing_if = "Option::is_none")]
+    pub created_at: Option<String>,
+    #[serde(rename = "updated_at", skip_serializing_if = "Option::is_none")]
+    pub updated_at: Option<String>,
+    #[serde(rename = "currency_id", skip_serializing_if = "Option::is_none")]
+    pub currency_id: Option<i32>,
+    #[serde(rename = "currency_code", skip_serializing_if = "Option::is_none")]
+    pub currency_code: Option<String>,
+    #[serde(rename = "currency_symbol", skip_serializing_if = "Option::is_none")]
+    pub currency_symbol: Option<String>,
+    #[serde(rename = "currency_decimal_places", skip_serializing_if = "Option::is_none")]
+    pub currency_decimal_places: Option<i32>,
+    #[serde(rename = "amount", skip_serializing_if = "Option::is_none")]
+    pub amount: Option<f64>,
+    /// The journal associated with the event.
+    #[serde(rename = "journal_id", skip_serializing_if = "Option::is_none")]
+    pub journal_id: Option<i32>,
+    #[serde(rename = "transaction_id", skip_serializing_if = "Option::is_none")]
+    pub transaction_id: Option<i32>,
 }
 
 impl PiggyBankEvent {
     pub fn new() -> PiggyBankEvent {
         PiggyBankEvent {
-            _type: None,
-            id: None,
-            attributes: None,
-            links: None,
+            created_at: None,
+            updated_at: None,
+            currency_id: None,
+            currency_code: None,
+            currency_symbol: None,
+            currency_decimal_places: None,
+            amount: None,
+            journal_id: None,
+            transaction_id: None,
         }
     }
 }

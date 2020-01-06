@@ -185,7 +185,7 @@ Name | Type | Description  | Required | Notes
 **id** | **i32** | The ID of the bill. | [required] |
 **start** | Option<**String**> | A date formatted YYYY-MM-DD.  |  |
 **end** | Option<**String**> | A date formatted YYYY-MM-DD.  |  |
-**_type** | Option<**String**> | Optional filter on the transaction type(s) returned |  |
+**_type** | Option<[**crate::models::TransactionTypeFilter**](.md)> | Optional filter on the transaction type(s) returned |  |
 
 ### Return type
 

@@ -16,20 +16,20 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct PreferenceRead {
     /// Immutable value
-    #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub _type: Option<String>,
-    #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
-    #[serde(rename = "attributes", skip_serializing_if = "Option::is_none")]
-    pub attributes: Option<crate::models::Preference>,
+    #[serde(rename = "type")]
+    pub _type: String,
+    #[serde(rename = "id")]
+    pub id: String,
+    #[serde(rename = "attributes")]
+    pub attributes: crate::models::Preference,
 }
 
 impl PreferenceRead {
-    pub fn new() -> PreferenceRead {
+    pub fn new(_type: String, id: String, attributes: crate::models::Preference) -> PreferenceRead {
         PreferenceRead {
-            _type: None,
-            id: None,
-            attributes: None,
+            _type,
+            id,
+            attributes,
         }
     }
 }

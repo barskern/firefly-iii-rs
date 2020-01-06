@@ -42,7 +42,7 @@ impl CurrencyExchangeRatesApi for CurrencyExchangeRatesApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/cer", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref s) = from {
             req_builder = req_builder.query(&[("from", &s.to_string())]);

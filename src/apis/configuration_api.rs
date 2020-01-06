@@ -43,7 +43,7 @@ impl ConfigurationApi for ConfigurationApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/configuration", configuration.base_path);
-        let mut req_builder = client.request(reqwest::Method::GET, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::GET, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -63,7 +63,7 @@ impl ConfigurationApi for ConfigurationApiClient {
         let client = &configuration.client;
 
         let uri_str = format!("{}/api/v1/configuration/{name}", configuration.base_path, name=crate::apis::urlencode(name));
-        let mut req_builder = client.request(reqwest::Method::POST, uri_str.as_str());
+        let mut req_builder = client.request(::reqwest::Method::POST, uri_str.as_str());
 
         if let Some(ref user_agent) = configuration.user_agent {
             req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
