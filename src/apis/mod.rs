@@ -8,6 +8,26 @@ pub enum Error {
     Io(std::io::Error),
 }
 
+impl std::fmt::Display for Error {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::Reqwest(_) => write!(f, "reqwest error"),
+            Self::Serde(_) => write!(f, "serde error"),
+            Self::Io(_) => write!(f, "i/o error"),
+        }
+    }
+}
+
+impl std::error::Error for Error {
+    fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
+        match self {
+            Self::Reqwest(e) => Some(e),
+            Self::Serde(e) => Some(e),
+            Self::Io(e) => Some(e),
+        }
+    }
+}
+
 impl From<reqwest::Error> for Error {
     fn from(e: reqwest::Error) -> Self {
         Error::Reqwest(e)
