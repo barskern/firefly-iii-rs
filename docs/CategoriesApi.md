@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_category**](CategoriesApi.md#delete_category) | **DELETE** /api/v1/categories/{id} | Delete a category.
 [**get_category**](CategoriesApi.md#get_category) | **GET** /api/v1/categories/{id} | Get a single category.
+[**list_attachment_by_category**](CategoriesApi.md#list_attachment_by_category) | **GET** /api/v1/categories/{id}/attachments | Lists all attachments.
 [**list_category**](CategoriesApi.md#list_category) | **GET** /api/v1/categories | List all categories.
 [**list_transaction_by_category**](CategoriesApi.md#list_transaction_by_category) | **GET** /api/v1/categories/{id}/transactions | List all transactions in a category.
 [**store_category**](CategoriesApi.md#store_category) | **POST** /api/v1/categories | Store a new category
@@ -45,7 +46,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_category
 
-> crate::models::CategorySingle get_category(id)
+> crate::models::CategorySingle get_category(id, start, end)
 Get a single category.
 
 Get a single category.
@@ -56,10 +57,43 @@ Get a single category.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **i32** | The ID of the category. | [required] |
+**start** | Option<**String**> | A date formatted YYYY-MM-DD, to show spent and earned info.  |  |
+**end** | Option<**String**> | A date formatted YYYY-MM-DD, to show spent and earned info.  |  |
 
 ### Return type
 
 [**crate::models::CategorySingle**](CategorySingle.md)
+
+### Authorization
+
+[firefly_iii_auth](../README.md#firefly_iii_auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## list_attachment_by_category
+
+> crate::models::AttachmentArray list_attachment_by_category(id, page)
+Lists all attachments.
+
+Lists all attachments.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **i32** | The ID of the category. | [required] |
+**page** | Option<**i32**> | Page number. The default pagination is 50. |  |
+
+### Return type
+
+[**crate::models::AttachmentArray**](AttachmentArray.md)
 
 ### Authorization
 

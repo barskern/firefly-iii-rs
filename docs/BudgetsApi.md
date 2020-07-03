@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**delete_budget_limit**](BudgetsApi.md#delete_budget_limit) | **DELETE** /api/v1/budgets/limits/{id} | Delete a budget limit.
 [**get_budget**](BudgetsApi.md#get_budget) | **GET** /api/v1/budgets/{id} | Get a single budget.
 [**get_budget_limit**](BudgetsApi.md#get_budget_limit) | **GET** /api/v1/budgets/limits/{id} | Get single budget limit.
+[**list_attachment_by_budget**](BudgetsApi.md#list_attachment_by_budget) | **GET** /api/v1/budgets/{id}/attachments | Lists all attachments.
 [**list_budget**](BudgetsApi.md#list_budget) | **GET** /api/v1/budgets | List all budgets.
 [**list_budget_limit_by_budget**](BudgetsApi.md#list_budget_limit_by_budget) | **GET** /api/v1/budgets/{id}/limits | Get all limits
 [**list_transaction_by_budget**](BudgetsApi.md#list_transaction_by_budget) | **GET** /api/v1/budgets/{id}/transactions | All transactions to a budget.
@@ -126,6 +127,37 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**crate::models::BudgetLimitSingle**](BudgetLimitSingle.md)
+
+### Authorization
+
+[firefly_iii_auth](../README.md#firefly_iii_auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## list_attachment_by_budget
+
+> crate::models::AttachmentArray list_attachment_by_budget(id, page)
+Lists all attachments.
+
+Lists all attachments.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **i32** | The ID of the budget. | [required] |
+**page** | Option<**i32**> | Page number. The default pagination is 50. |  |
+
+### Return type
+
+[**crate::models::AttachmentArray**](AttachmentArray.md)
 
 ### Authorization
 

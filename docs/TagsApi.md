@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**delete_tag**](TagsApi.md#delete_tag) | **DELETE** /api/v1/tags/{tag} | Delete an tag.
 [**get_tag**](TagsApi.md#get_tag) | **GET** /api/v1/tags/{tag} | Get a single tag.
 [**get_tag_cloud**](TagsApi.md#get_tag_cloud) | **GET** /api/v1/tag-cloud | Returns a basic tag cloud.
+[**list_attachment_by_tag**](TagsApi.md#list_attachment_by_tag) | **GET** /api/v1/tags/{id}/attachments | Lists all attachments.
 [**list_tag**](TagsApi.md#list_tag) | **GET** /api/v1/tags | List all tags.
 [**list_transaction_by_tag**](TagsApi.md#list_transaction_by_tag) | **GET** /api/v1/tags/{tag}/transactions | List all transactions with this tag.
 [**store_tag**](TagsApi.md#store_tag) | **POST** /api/v1/tags | Store a new tag
@@ -93,6 +94,37 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**crate::models::TagCloud**](TagCloud.md)
+
+### Authorization
+
+[firefly_iii_auth](../README.md#firefly_iii_auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## list_attachment_by_tag
+
+> crate::models::AttachmentArray list_attachment_by_tag(id, page)
+Lists all attachments.
+
+Lists all attachments.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **i32** | The ID of the tag. | [required] |
+**page** | Option<**i32**> | Page number. The default pagination is 50. |  |
+
+### Return type
+
+[**crate::models::AttachmentArray**](AttachmentArray.md)
 
 ### Authorization
 

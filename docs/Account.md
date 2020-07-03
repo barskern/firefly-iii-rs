@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **liability_type** | Option<**String**> | Mandatory when type is liability. Specifies the exact type. | [optional]
 **liability_amount** | Option<**f64**> | Mandatory when type is liability. Amount of money in the liability. Must be positive. | [optional]
 **liability_start_date** | Option<[**String**](string.md)> | Mandatory when type is liability. Start date for the liability. | [optional]
-**interest** | Option<**f32**> | Mandatory when type is liability. Interest percentage. | [optional]
+**interest** | Option<**String**> | Mandatory when type is liability. Interest percentage. | [optional]
 **interest_period** | Option<**String**> | Mandatory when type is liability. Period over which the interest is calculated. | [optional]
 **notes** | Option<**String**> |  | [optional]
 

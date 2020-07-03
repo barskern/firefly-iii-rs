@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**delete_account**](AccountsApi.md#delete_account) | **DELETE** /api/v1/accounts/{id} | Permanently delete account.
 [**get_account**](AccountsApi.md#get_account) | **GET** /api/v1/accounts/{id} | Get single account.
 [**list_account**](AccountsApi.md#list_account) | **GET** /api/v1/accounts | List all accounts.
+[**list_attachment_by_account**](AccountsApi.md#list_attachment_by_account) | **GET** /api/v1/accounts/{id}/attachments | Lists all attachments.
 [**list_piggy_bank_by_account**](AccountsApi.md#list_piggy_bank_by_account) | **GET** /api/v1/accounts/{id}/piggy_banks | List all piggy banks related to the account.
 [**list_transaction_by_account**](AccountsApi.md#list_transaction_by_account) | **GET** /api/v1/accounts/{id}/transactions | List all transactions related to the account.
 [**store_account**](AccountsApi.md#store_account) | **POST** /api/v1/accounts | Create new account.
@@ -94,6 +95,37 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**crate::models::AccountArray**](AccountArray.md)
+
+### Authorization
+
+[firefly_iii_auth](../README.md#firefly_iii_auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## list_attachment_by_account
+
+> crate::models::AttachmentArray list_attachment_by_account(id, page)
+Lists all attachments.
+
+Lists all attachments.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **i32** | The ID of the account. | [required] |
+**page** | Option<**i32**> | Page number. The default pagination is 50. |  |
+
+### Return type
+
+[**crate::models::AttachmentArray**](AttachmentArray.md)
 
 ### Authorization
 

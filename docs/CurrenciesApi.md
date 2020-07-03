@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**disable_currency**](CurrenciesApi.md#disable_currency) | **POST** /api/v1/currencies/{code}/disable | Disable a currency.
 [**enable_currency**](CurrenciesApi.md#enable_currency) | **POST** /api/v1/currencies/{code}/enable | Enable a single currency.
 [**get_currency**](CurrenciesApi.md#get_currency) | **GET** /api/v1/currencies/{code} | Get a single currency.
+[**get_default_currency**](CurrenciesApi.md#get_default_currency) | **GET** /api/v1/currencies/default | Get the user's default currency.
 [**list_account_by_currency**](CurrenciesApi.md#list_account_by_currency) | **GET** /api/v1/currencies/{code}/accounts | List all accounts with this currency.
 [**list_available_budget_by_currency**](CurrenciesApi.md#list_available_budget_by_currency) | **GET** /api/v1/currencies/{code}/available_budgets | List all available budgets with this currency.
 [**list_bill_by_currency**](CurrenciesApi.md#list_bill_by_currency) | **GET** /api/v1/currencies/{code}/bills | List all bills with this currency.
@@ -156,6 +157,33 @@ Get a single currency.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **code** | **String** | The currency code. | [required] |
+
+### Return type
+
+[**crate::models::CurrencySingle**](CurrencySingle.md)
+
+### Authorization
+
+[firefly_iii_auth](../README.md#firefly_iii_auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_default_currency
+
+> crate::models::CurrencySingle get_default_currency()
+Get the user's default currency.
+
+Get the user's default currency.
+
+### Parameters
+
+This endpoint does not need any parameter.
 
 ### Return type
 
