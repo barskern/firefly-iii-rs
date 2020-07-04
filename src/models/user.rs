@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct User {
     #[serde(rename = "created_at", skip_serializing_if = "Option::is_none")]
     pub created_at: Option<String>,
@@ -47,13 +47,13 @@ impl User {
 }
 
 /// If you say the user must be blocked, this will be the reason code.
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum BlockedCode {
     #[serde(rename = "email_changed")]
     EmailChanged,
 }
 /// Role for the new user. Can be empty or omitted.
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum Role {
     #[serde(rename = "owner")]
     Owner,

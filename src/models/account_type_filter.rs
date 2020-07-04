@@ -12,7 +12,7 @@
 use serde::{Deserialize, Serialize};
 
 /// 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum AccountTypeFilter {
     #[serde(rename = "all")]
     All,

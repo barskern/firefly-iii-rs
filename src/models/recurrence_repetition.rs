@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct RecurrenceRepetition {
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
     pub id: Option<i32>,
@@ -58,7 +58,7 @@ impl RecurrenceRepetition {
 }
 
 /// The type of the repetition. ndom means: the n-th weekday of the month, where you can also specify which day of the week.
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum Type {
     #[serde(rename = "daily")]
     Daily,

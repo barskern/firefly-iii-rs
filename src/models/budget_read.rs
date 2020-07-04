@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct BudgetRead {
     /// Immutable value
     #[serde(rename = "type")]

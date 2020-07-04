@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct PageLink {
     #[serde(rename = "self", skip_serializing_if = "Option::is_none")]
     pub _self: Option<String>,

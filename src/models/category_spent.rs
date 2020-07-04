@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct CategorySpent {
     #[serde(rename = "start", skip_serializing_if = "Option::is_none")]
     pub start: Option<String>,

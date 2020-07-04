@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct TransactionSplit {
     /// User ID
     #[serde(rename = "user", skip_serializing_if = "Option::is_none")]
@@ -29,7 +29,7 @@ pub struct TransactionSplit {
     pub date: String,
     /// Amount of the transaction.
     #[serde(rename = "amount")]
-    pub amount: f64,
+    pub amount: String,
     /// Description of the transaction.
     #[serde(rename = "description")]
     pub description: String,
@@ -51,7 +51,7 @@ pub struct TransactionSplit {
     pub currency_decimal_places: Option<i32>,
     /// The amount in a foreign currency.
     #[serde(rename = "foreign_amount", skip_serializing_if = "Option::is_none")]
-    pub foreign_amount: Option<f64>,
+    pub foreign_amount: Option<String>,
     /// Currency ID of the foreign currency. Default is null. Is required when you submit a foreign amount.
     #[serde(rename = "foreign_currency_id", skip_serializing_if = "Option::is_none")]
     pub foreign_currency_id: Option<i32>,
@@ -172,7 +172,7 @@ pub struct TransactionSplit {
 }
 
 impl TransactionSplit {
-    pub fn new(date: String, amount: f64, description: String, source_id: Option<i32>, destination_id: Option<i32>) -> TransactionSplit {
+    pub fn new(date: String, amount: String, description: String, source_id: Option<i32>, destination_id: Option<i32>) -> TransactionSplit {
         TransactionSplit {
             user: None,
             transaction_journal_id: None,
@@ -235,7 +235,7 @@ impl TransactionSplit {
 }
 
 /// Type of transaction.
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum Type {
     #[serde(rename = "withdrawal")]
     Withdrawal,

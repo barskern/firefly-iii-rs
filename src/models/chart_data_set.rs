@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct ChartDataSet {
     /// This is the title of the current set. It can refer to an account, a budget or another object (by name).
     #[serde(rename = "label", skip_serializing_if = "Option::is_none")]

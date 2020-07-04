@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **transaction_journal_id** | Option<**i32**> | ID of the underlying transaction journal. Each transaction consists of a transaction group (see the top ID) and one or more journals making up the splits of the transaction.  | [optional][readonly]
 **_type** | Option<**String**> | Type of transaction. | [optional]
 **date** | [**String**](string.md) | Date of the transaction | 
-**amount** | **f64** | Amount of the transaction. | 
+**amount** | **String** | Amount of the transaction. | 
 **description** | **String** | Description of the transaction. | 
 **order** | Option<**i32**> | Order of this entry in the list of transactions. | [optional]
 **currency_id** | Option<**i32**> | Currency ID. Default is the source account's currency, or the user's default currency. Can be used instead of currency_code. | [optional]
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **currency_symbol** | Option<**String**> |  | [optional][readonly]
 **currency_name** | Option<**String**> |  | [optional][readonly]
 **currency_decimal_places** | Option<**i32**> | Number of decimals used in this currency. | [optional][readonly]
-**foreign_amount** | Option<**f64**> | The amount in a foreign currency. | [optional]
+**foreign_amount** | Option<**String**> | The amount in a foreign currency. | [optional]
 **foreign_currency_id** | Option<**i32**> | Currency ID of the foreign currency. Default is null. Is required when you submit a foreign amount. | [optional]
 **foreign_currency_code** | Option<**String**> | Currency code of the foreign currency. Default is NULL. Can be used instead of the foreign_currency_id, but this or the ID is required when submitting a foreign amount. | [optional]
 **foreign_currency_symbol** | Option<**String**> |  | [optional][readonly]

@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct BasicSummaryEntry {
     /// This is a reference to the type of info shared, not influenced by translations or user preferences.
     #[serde(rename = "key", skip_serializing_if = "Option::is_none")]

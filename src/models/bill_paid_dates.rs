@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct BillPaidDates {
     /// Transaction group ID of the paid bill.
     #[serde(rename = "transaction_group_id", skip_serializing_if = "Option::is_none")]

@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct ChartDataPoint {
     /// The key is the label of the value, so for example: '2018-01-01' => 13 or 'Groceries' => -123.
     #[serde(rename = "key", skip_serializing_if = "Option::is_none")]

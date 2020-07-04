@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Account {
     #[serde(rename = "created_at", skip_serializing_if = "Option::is_none")]
     pub created_at: Option<String>,
@@ -119,7 +119,7 @@ impl Account {
 }
 
 /// Can only be one one these account types. import, initial-balance and reconciliation cannot be set manually.
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum Type {
     #[serde(rename = "asset")]
     Asset,
@@ -141,7 +141,7 @@ pub enum Type {
     Reconciliation,
 }
 /// Is only mandatory when the type is asset.
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum AccountRole {
     #[serde(rename = "defaultAsset")]
     DefaultAsset,
@@ -155,13 +155,13 @@ pub enum AccountRole {
     CashWalletAsset,
 }
 /// Mandatory when the account_role is ccAsset. Can only be monthlyFull.
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum CreditCardType {
     #[serde(rename = "monthlyFull")]
     MonthlyFull,
 }
 /// Mandatory when type is liability. Specifies the exact type.
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum LiabilityType {
     #[serde(rename = "loan")]
     Loan,
@@ -171,7 +171,7 @@ pub enum LiabilityType {
     Mortgage,
 }
 /// Mandatory when type is liability. Period over which the interest is calculated.
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum InterestPeriod {
     #[serde(rename = "daily")]
     Daily,

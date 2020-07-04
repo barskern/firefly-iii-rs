@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct ConfigurationUpdate {
     /// Can be a number or a boolean. This depends on the actual configuration value.
     #[serde(rename = "value")]
