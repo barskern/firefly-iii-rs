@@ -84,6 +84,9 @@ impl CategoriesApi for CategoriesApiClient {
             req_builder = req_builder.bearer_auth(token.to_owned());
         };
 
+        // ensure returntype is json (only supported returntype)
+        req_builder = req_builder.header(reqwest::header::ACCEPT, "application/json");
+
         // send request
         let req = req_builder.build()?;
 
@@ -107,6 +110,9 @@ impl CategoriesApi for CategoriesApiClient {
             req_builder = req_builder.bearer_auth(token.to_owned());
         };
 
+        // ensure returntype is json (only supported returntype)
+        req_builder = req_builder.header(reqwest::header::ACCEPT, "application/json");
+
         // send request
         let req = req_builder.build()?;
 
@@ -129,6 +135,9 @@ impl CategoriesApi for CategoriesApiClient {
         if let Some(ref token) = configuration.oauth_access_token {
             req_builder = req_builder.bearer_auth(token.to_owned());
         };
+
+        // ensure returntype is json (only supported returntype)
+        req_builder = req_builder.header(reqwest::header::ACCEPT, "application/json");
 
         // send request
         let req = req_builder.build()?;
@@ -162,6 +171,9 @@ impl CategoriesApi for CategoriesApiClient {
             req_builder = req_builder.bearer_auth(token.to_owned());
         };
 
+        // ensure returntype is json (only supported returntype)
+        req_builder = req_builder.header(reqwest::header::ACCEPT, "application/json");
+
         // send request
         let req = req_builder.build()?;
 
@@ -183,6 +195,9 @@ impl CategoriesApi for CategoriesApiClient {
         };
         req_builder = req_builder.json(&category);
 
+        // ensure returntype is json (only supported returntype)
+        req_builder = req_builder.header(reqwest::header::ACCEPT, "application/json");
+
         // send request
         let req = req_builder.build()?;
 
@@ -203,6 +218,9 @@ impl CategoriesApi for CategoriesApiClient {
             req_builder = req_builder.bearer_auth(token.to_owned());
         };
         req_builder = req_builder.json(&category);
+
+        // ensure returntype is json (only supported returntype)
+        req_builder = req_builder.header(reqwest::header::ACCEPT, "application/json");
 
         // send request
         let req = req_builder.build()?;

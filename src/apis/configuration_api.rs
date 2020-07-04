@@ -52,6 +52,9 @@ impl ConfigurationApi for ConfigurationApiClient {
             req_builder = req_builder.bearer_auth(token.to_owned());
         };
 
+        // ensure returntype is json (only supported returntype)
+        req_builder = req_builder.header(reqwest::header::ACCEPT, "application/json");
+
         // send request
         let req = req_builder.build()?;
 
@@ -74,6 +77,9 @@ impl ConfigurationApi for ConfigurationApiClient {
         let mut form_params = std::collections::HashMap::new();
         form_params.insert("value", value.to_string());
         req_builder = req_builder.form(&form_params);
+
+        // ensure returntype is json (only supported returntype)
+        req_builder = req_builder.header(reqwest::header::ACCEPT, "application/json");
 
         // send request
         let req = req_builder.build()?;
