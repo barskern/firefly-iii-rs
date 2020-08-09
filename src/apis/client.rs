@@ -14,6 +14,7 @@ pub struct APIClient {
     configuration_api: Box<dyn crate::apis::ConfigurationApi>,
     currencies_api: Box<dyn crate::apis::CurrenciesApi>,
     currency_exchange_rates_api: Box<dyn crate::apis::CurrencyExchangeRatesApi>,
+    data_api: Box<dyn crate::apis::DataApi>,
     import_api: Box<dyn crate::apis::ImportApi>,
     links_api: Box<dyn crate::apis::LinksApi>,
     piggy_banks_api: Box<dyn crate::apis::PiggyBanksApi>,
@@ -21,6 +22,7 @@ pub struct APIClient {
     recurrences_api: Box<dyn crate::apis::RecurrencesApi>,
     rule_groups_api: Box<dyn crate::apis::RuleGroupsApi>,
     rules_api: Box<dyn crate::apis::RulesApi>,
+    search_api: Box<dyn crate::apis::SearchApi>,
     summary_api: Box<dyn crate::apis::SummaryApi>,
     tags_api: Box<dyn crate::apis::TagsApi>,
     transactions_api: Box<dyn crate::apis::TransactionsApi>,
@@ -43,6 +45,7 @@ impl APIClient {
             configuration_api: Box::new(crate::apis::ConfigurationApiClient::new(arc.clone())),
             currencies_api: Box::new(crate::apis::CurrenciesApiClient::new(arc.clone())),
             currency_exchange_rates_api: Box::new(crate::apis::CurrencyExchangeRatesApiClient::new(arc.clone())),
+            data_api: Box::new(crate::apis::DataApiClient::new(arc.clone())),
             import_api: Box::new(crate::apis::ImportApiClient::new(arc.clone())),
             links_api: Box::new(crate::apis::LinksApiClient::new(arc.clone())),
             piggy_banks_api: Box::new(crate::apis::PiggyBanksApiClient::new(arc.clone())),
@@ -50,6 +53,7 @@ impl APIClient {
             recurrences_api: Box::new(crate::apis::RecurrencesApiClient::new(arc.clone())),
             rule_groups_api: Box::new(crate::apis::RuleGroupsApiClient::new(arc.clone())),
             rules_api: Box::new(crate::apis::RulesApiClient::new(arc.clone())),
+            search_api: Box::new(crate::apis::SearchApiClient::new(arc.clone())),
             summary_api: Box::new(crate::apis::SummaryApiClient::new(arc.clone())),
             tags_api: Box::new(crate::apis::TagsApiClient::new(arc.clone())),
             transactions_api: Box::new(crate::apis::TransactionsApiClient::new(arc.clone())),
@@ -101,6 +105,10 @@ impl APIClient {
         self.currency_exchange_rates_api.as_ref()
     }
 
+    pub fn data_api(&self) -> &dyn crate::apis::DataApi{
+        self.data_api.as_ref()
+    }
+
     pub fn import_api(&self) -> &dyn crate::apis::ImportApi{
         self.import_api.as_ref()
     }
@@ -127,6 +135,10 @@ impl APIClient {
 
     pub fn rules_api(&self) -> &dyn crate::apis::RulesApi{
         self.rules_api.as_ref()
+    }
+
+    pub fn search_api(&self) -> &dyn crate::apis::SearchApi{
+        self.search_api.as_ref()
     }
 
     pub fn summary_api(&self) -> &dyn crate::apis::SummaryApi{

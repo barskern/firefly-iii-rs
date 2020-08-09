@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **currency_code** | Option<**String**> |  | [optional]
 **currency_symbol** | Option<**String**> |  | [optional]
 **currency_decimal_places** | Option<**i32**> | Number of decimals supported by the currency | [optional]
-**amount** | Option<**f64**> | The amount spent. | [optional]
+**amount** | Option<**String**> | The amount spent. | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

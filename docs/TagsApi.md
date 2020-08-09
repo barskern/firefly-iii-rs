@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**delete_tag**](TagsApi.md#delete_tag) | **DELETE** /api/v1/tags/{tag} | Delete an tag.
 [**get_tag**](TagsApi.md#get_tag) | **GET** /api/v1/tags/{tag} | Get a single tag.
 [**get_tag_cloud**](TagsApi.md#get_tag_cloud) | **GET** /api/v1/tag-cloud | Returns a basic tag cloud.
-[**list_attachment_by_tag**](TagsApi.md#list_attachment_by_tag) | **GET** /api/v1/tags/{id}/attachments | Lists all attachments.
+[**list_attachment_by_tag**](TagsApi.md#list_attachment_by_tag) | **GET** /api/v1/tags/{tag}/attachments | Lists all attachments.
 [**list_tag**](TagsApi.md#list_tag) | **GET** /api/v1/tags | List all tags.
 [**list_transaction_by_tag**](TagsApi.md#list_transaction_by_tag) | **GET** /api/v1/tags/{tag}/transactions | List all transactions with this tag.
 [**store_tag**](TagsApi.md#store_tag) | **POST** /api/v1/tags | Store a new tag
@@ -109,7 +109,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_attachment_by_tag
 
-> crate::models::AttachmentArray list_attachment_by_tag(id, page)
+> crate::models::AttachmentArray list_attachment_by_tag(tag, page)
 Lists all attachments.
 
 Lists all attachments.
@@ -119,7 +119,7 @@ Lists all attachments.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the tag. | [required] |
+**tag** | **String** | Either the tag itself or the tag ID. | [required] |
 **page** | Option<**i32**> | Page number. The default pagination is 50. |  |
 
 ### Return type

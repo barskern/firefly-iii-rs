@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **to_currency_decimal_places** | Option<**i32**> |  | [optional]
 **date** | Option<[**String**](string.md)> |  | [optional]
 **rate** | Option<**f32**> |  | [optional]
-**amount** | Option<**f64**> | The amount in the \"to\"-currency, if provided in the request. | [optional]
+**amount** | Option<**String**> | The amount in the \"to\"-currency, if provided in the request. | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **String** |  | 
-**amount** | **f64** | Amount of the transaction. | 
-**foreign_amount** | Option<**f64**> | Foreign amount of the transaction. | [optional]
+**amount** | **String** | Amount of the transaction. | 
+**foreign_amount** | Option<**String**> | Foreign amount of the transaction. | [optional]
 **currency_id** | Option<**i32**> | Submit either a currency_id or a currency_code. | [optional]
 **currency_code** | Option<**String**> | Submit either a currency_id or a currency_code. | [optional]
 **currency_symbol** | Option<**String**> |  | [optional][readonly]

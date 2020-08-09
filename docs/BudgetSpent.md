@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sum** | Option<**f64**> | The amount spent. | [optional]
+**sum** | Option<**String**> | The amount spent. | [optional]
 **currency_id** | Option<**i32**> |  | [optional]
 **currency_code** | Option<**String**> |  | [optional]
 **currency_symbol** | Option<**String**> |  | [optional]

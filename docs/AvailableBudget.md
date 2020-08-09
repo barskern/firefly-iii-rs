@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **currency_code** | Option<**String**> | Use either currency_id or currency_code. | [optional]
 **currency_symbol** | Option<**String**> |  | [optional][readonly]
 **currency_decimal_places** | Option<**i32**> |  | [optional][readonly]
-**amount** | **f64** |  | 
+**amount** | **String** |  | 
 **start** | [**String**](string.md) | Start date of the available budget. | 
 **end** | [**String**](string.md) | End date of the available budget. | 
 **spent_in_budgets** | Option<[**Vec<crate::models::BudgetSpent>**](BudgetSpent.md)> |  | [optional][readonly]

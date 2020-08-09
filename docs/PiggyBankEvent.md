@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **currency_code** | Option<**String**> |  | [optional]
 **currency_symbol** | Option<**String**> |  | [optional]
 **currency_decimal_places** | Option<**i32**> |  | [optional]
-**amount** | Option<**f64**> |  | [optional]
+**amount** | Option<**String**> |  | [optional]
 **journal_id** | Option<**i32**> | The journal associated with the event. | [optional]
 **transaction_id** | Option<**i32**> |  | [optional]
 
