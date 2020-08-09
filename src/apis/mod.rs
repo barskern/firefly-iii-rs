@@ -11,9 +11,9 @@ pub enum Error {
 impl std::fmt::Display for Error {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            Self::Reqwest(_) => write!(f, "reqwest error"),
-            Self::Serde(_) => write!(f, "serde error"),
-            Self::Io(_) => write!(f, "i/o error"),
+            Self::Reqwest(e) => write!(f, "reqwest error: {}", e),
+            Self::Serde(e) => write!(f, "serde error: {}", e),
+            Self::Io(e) => write!(f, "i/o error: {}", e),
         }
     }
 }
