@@ -6,6 +6,7 @@ pub struct APIClient {
     about_api: Box<dyn crate::apis::AboutApi>,
     accounts_api: Box<dyn crate::apis::AccountsApi>,
     attachments_api: Box<dyn crate::apis::AttachmentsApi>,
+    autocomplete_api: Box<dyn crate::apis::AutocompleteApi>,
     available_budgets_api: Box<dyn crate::apis::AvailableBudgetsApi>,
     bills_api: Box<dyn crate::apis::BillsApi>,
     budgets_api: Box<dyn crate::apis::BudgetsApi>,
@@ -37,6 +38,7 @@ impl APIClient {
             about_api: Box::new(crate::apis::AboutApiClient::new(arc.clone())),
             accounts_api: Box::new(crate::apis::AccountsApiClient::new(arc.clone())),
             attachments_api: Box::new(crate::apis::AttachmentsApiClient::new(arc.clone())),
+            autocomplete_api: Box::new(crate::apis::AutocompleteApiClient::new(arc.clone())),
             available_budgets_api: Box::new(crate::apis::AvailableBudgetsApiClient::new(arc.clone())),
             bills_api: Box::new(crate::apis::BillsApiClient::new(arc.clone())),
             budgets_api: Box::new(crate::apis::BudgetsApiClient::new(arc.clone())),
@@ -71,6 +73,10 @@ impl APIClient {
 
     pub fn attachments_api(&self) -> &dyn crate::apis::AttachmentsApi{
         self.attachments_api.as_ref()
+    }
+
+    pub fn autocomplete_api(&self) -> &dyn crate::apis::AutocompleteApi{
+        self.autocomplete_api.as_ref()
     }
 
     pub fn available_budgets_api(&self) -> &dyn crate::apis::AvailableBudgetsApi{

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_type** | **String** | Immutable value | 
-**id** | **String** |  | 
+**id** | **i32** |  | 
 **attributes** | [**crate::models::Transaction**](Transaction.md) |  | 
 **links** | [**crate::models::ObjectLink**](ObjectLink.md) |  | 
 

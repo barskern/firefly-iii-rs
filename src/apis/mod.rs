@@ -56,6 +56,8 @@ mod accounts_api;
 pub use self::accounts_api::{ AccountsApi, AccountsApiClient };
 mod attachments_api;
 pub use self::attachments_api::{ AttachmentsApi, AttachmentsApiClient };
+mod autocomplete_api;
+pub use self::autocomplete_api::{ AutocompleteApi, AutocompleteApiClient };
 mod available_budgets_api;
 pub use self::available_budgets_api::{ AvailableBudgetsApi, AvailableBudgetsApiClient };
 mod bills_api;

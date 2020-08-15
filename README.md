@@ -45,6 +45,19 @@ Class | Method | HTTP request | Description
 *AttachmentsApi* | [**store_attachment**](docs/AttachmentsApi.md#store_attachment) | **POST** /api/v1/attachments | Store a new attachment.
 *AttachmentsApi* | [**update_attachment**](docs/AttachmentsApi.md#update_attachment) | **PUT** /api/v1/attachments/{id} | Update existing attachment.
 *AttachmentsApi* | [**upload_attachment**](docs/AttachmentsApi.md#upload_attachment) | **POST** /api/v1/attachments/{id}/upload | Upload an attachment.
+*AutocompleteApi* | [**get_accounts_ac**](docs/AutocompleteApi.md#get_accounts_ac) | **GET** /api/v1/autocomplete/accounts | All accounts of the user returned in a basic auto-complete array.
+*AutocompleteApi* | [**get_bills_ac**](docs/AutocompleteApi.md#get_bills_ac) | **GET** /api/v1/autocomplete/bills | All bills of the user returned in a basic auto-complete array.
+*AutocompleteApi* | [**get_budgets_ac**](docs/AutocompleteApi.md#get_budgets_ac) | **GET** /api/v1/autocomplete/budgets | All budgets of the user returned in a basic auto-complete array.
+*AutocompleteApi* | [**get_categories_ac**](docs/AutocompleteApi.md#get_categories_ac) | **GET** /api/v1/autocomplete/categories | All categories of the user returned in a basic auto-complete array.
+*AutocompleteApi* | [**get_currencies_ac**](docs/AutocompleteApi.md#get_currencies_ac) | **GET** /api/v1/autocomplete/currencies | All currencies of the user returned in a basic auto-complete array.
+*AutocompleteApi* | [**get_currencies_code_ac**](docs/AutocompleteApi.md#get_currencies_code_ac) | **GET** /api/v1/autocomplete/currencies-with-code | All currencies of the user returned in a basic auto-complete array.
+*AutocompleteApi* | [**get_object_groups_ac**](docs/AutocompleteApi.md#get_object_groups_ac) | **GET** /api/v1/autocomplete/object-groups | All object groups of the user returned in a basic auto-complete array.
+*AutocompleteApi* | [**get_rule_groups_ac**](docs/AutocompleteApi.md#get_rule_groups_ac) | **GET** /api/v1/autocomplete/rule-groups | All rule groups of the user returned in a basic auto-complete array.
+*AutocompleteApi* | [**get_rules_ac**](docs/AutocompleteApi.md#get_rules_ac) | **GET** /api/v1/autocomplete/rules | All rules of the user returned in a basic auto-complete array.
+*AutocompleteApi* | [**get_tag_ac**](docs/AutocompleteApi.md#get_tag_ac) | **GET** /api/v1/autocomplete/tags | All tags of the user returned in a basic auto-complete array.
+*AutocompleteApi* | [**get_transaction_types_ac**](docs/AutocompleteApi.md#get_transaction_types_ac) | **GET** /api/v1/autocomplete/transaction-types | All transaction types returned in a basic auto-complete array. English only.
+*AutocompleteApi* | [**get_transactions_ac**](docs/AutocompleteApi.md#get_transactions_ac) | **GET** /api/v1/autocomplete/transactions | All transaction descriptions of the user returned in a basic auto-complete array.
+*AutocompleteApi* | [**get_transactions_idac**](docs/AutocompleteApi.md#get_transactions_idac) | **GET** /api/v1/autocomplete/transactions-with-id | All transactions, complemented with their ID, of the user returned in a basic auto-complete array.
 *AvailableBudgetsApi* | [**delete_available_budget**](docs/AvailableBudgetsApi.md#delete_available_budget) | **DELETE** /api/v1/available_budgets/{id} | Delete an available budget.
 *AvailableBudgetsApi* | [**get_available_budget**](docs/AvailableBudgetsApi.md#get_available_budget) | **GET** /api/v1/available_budgets/{id} | Get a single available budget.
 *AvailableBudgetsApi* | [**list_available_budget**](docs/AvailableBudgetsApi.md#list_available_budget) | **GET** /api/v1/available_budgets | List all available budget amounts.
@@ -189,6 +202,19 @@ Class | Method | HTTP request | Description
  - [AttachmentArray](docs/AttachmentArray.md)
  - [AttachmentRead](docs/AttachmentRead.md)
  - [AttachmentSingle](docs/AttachmentSingle.md)
+ - [AutocompleteAccount](docs/AutocompleteAccount.md)
+ - [AutocompleteBill](docs/AutocompleteBill.md)
+ - [AutocompleteBudget](docs/AutocompleteBudget.md)
+ - [AutocompleteCategory](docs/AutocompleteCategory.md)
+ - [AutocompleteCurrency](docs/AutocompleteCurrency.md)
+ - [AutocompleteCurrencyCode](docs/AutocompleteCurrencyCode.md)
+ - [AutocompleteObjectGroup](docs/AutocompleteObjectGroup.md)
+ - [AutocompleteRule](docs/AutocompleteRule.md)
+ - [AutocompleteRuleGroup](docs/AutocompleteRuleGroup.md)
+ - [AutocompleteTag](docs/AutocompleteTag.md)
+ - [AutocompleteTransaction](docs/AutocompleteTransaction.md)
+ - [AutocompleteTransactionId](docs/AutocompleteTransactionId.md)
+ - [AutocompleteTransactionType](docs/AutocompleteTransactionType.md)
  - [AvailableBudget](docs/AvailableBudget.md)
  - [AvailableBudgetArray](docs/AvailableBudgetArray.md)
  - [AvailableBudgetRead](docs/AvailableBudgetRead.md)
