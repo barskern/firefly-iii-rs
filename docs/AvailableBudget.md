@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created_at** | Option<**String**> |  | [optional][readonly]
 **updated_at** | Option<**String**> |  | [optional][readonly]
-**currency_id** | Option<**i32**> | Use either currency_id or currency_code. | [optional]
+**currency_id** | Option<**String**> | Use either currency_id or currency_code. | [optional]
 **currency_code** | Option<**String**> | Use either currency_id or currency_code. | [optional]
 **currency_symbol** | Option<**String**> |  | [optional][readonly]
 **currency_decimal_places** | Option<**i32**> |  | [optional][readonly]
 **amount** | **String** |  | 
-**start** | [**String**](string.md) | Start date of the available budget. | 
-**end** | [**String**](string.md) | End date of the available budget. | 
+**start** | **String** | Start date of the available budget. | 
+**end** | **String** | End date of the available budget. | 
 **spent_in_budgets** | Option<[**Vec<crate::models::BudgetSpent>**](BudgetSpent.md)> |  | [optional][readonly]
 **spent_outside_budget** | Option<[**Vec<crate::models::BudgetSpent>**](BudgetSpent.md)> |  | [optional][readonly]
 

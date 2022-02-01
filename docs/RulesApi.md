@@ -26,7 +26,7 @@ Delete an rule.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the rule. | [required] |
+**id** | **String** | The ID of the rule. | [required] |
 
 ### Return type
 
@@ -56,10 +56,10 @@ Fire the rule group on your transactions. Changes will be made by the rules in t
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the rule. | [required] |
-**start** | Option<**String**> | A date formatted YYYY-MM-DD, to limit the transactions the actions will be applied to. Both the start date and the end date must be present.  |  |
-**end** | Option<**String**> | A date formatted YYYY-MM-DD, to limit the transactions the actions will be applied to. Both the start date and the end date must be present.  |  |
-**accounts** | Option<**String**> | Limit the testing of the rule to these asset accounts. Only asset accounts will be accepted. Other types will be silently dropped.  |  |
+**id** | **String** | The ID of the rule. | [required] |
+**start** | Option<**String**> | A date formatted YYYY-MM-DD, to limit the transactions the actions will be applied to. If the start date is not present, it will be set to one year ago. If you use this field, both the start date and the end date must be present.  |  |
+**end** | Option<**String**> | A date formatted YYYY-MM-DD, to limit the transactions the actions will be applied to. If the end date is not present, it will be set to today. If you use this field, both the start date and the end date must be present.  |  |
+**accounts** | Option<[**Vec<i64>**](i64.md)> | Limit the triggering of the rule to these asset accounts or liabilities. Only asset accounts and liabilities will be accepted. Other types will be silently dropped.  |  |
 
 ### Return type
 
@@ -89,7 +89,7 @@ Get a single rule.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the object.X | [required] |
+**id** | **String** | The ID of the object.X | [required] |
 
 ### Return type
 
@@ -102,7 +102,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -132,14 +132,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## store_rule
 
-> crate::models::RuleSingle store_rule(rule)
+> crate::models::RuleSingle store_rule(rule_store)
 Store a new rule
 
 Creates a new rule. The data required can be submitted as a JSON body or as a list of parameters.
@@ -149,7 +149,7 @@ Creates a new rule. The data required can be submitted as a JSON body or as a li
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**rule** | [**Rule**](Rule.md) | JSON array or key=value pairs with the necessary rule information. See the model for the exact specifications. | [required] |
+**rule_store** | [**RuleStore**](RuleStore.md) | JSON array or key=value pairs with the necessary rule information. See the model for the exact specifications. | [required] |
 
 ### Return type
 
@@ -162,14 +162,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## test_rule
 
-> crate::models::TransactionArray test_rule(id, page, start, end, search_limit, triggered_limit, accounts)
+> crate::models::TransactionArray test_rule(id, start, end, accounts)
 Test which transactions would be hit by the rule. No changes will be made.
 
 Test which transactions would be hit by the rule. No changes will be made. Limit the result if you want to.
@@ -179,13 +179,10 @@ Test which transactions would be hit by the rule. No changes will be made. Limit
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the rule. | [required] |
-**page** | Option<**i32**> | Page number. The default pagination is 50 items. |  |
+**id** | **String** | The ID of the rule. | [required] |
 **start** | Option<**String**> | A date formatted YYYY-MM-DD, to limit the transactions the test will be applied to. Both the start date and the end date must be present.  |  |
 **end** | Option<**String**> | A date formatted YYYY-MM-DD, to limit the transactions the test will be applied to. Both the start date and the end date must be present.  |  |
-**search_limit** | Option<**i32**> | Maximum number of transactions Firefly III will try. Don't set this too high, or it will take Firefly III very long to run the test. I suggest a max of 200.  |  |
-**triggered_limit** | Option<**i32**> | Maximum number of transactions the rule can actually trigger on, before Firefly III stops. I would suggest setting this to 10 or 15. Don't go above the user's page size, because browsing to page 2 or 3 of a test result would fire the test again, making any navigation efforts very slow.  |  |
-**accounts** | Option<**String**> | Limit the testing of the rule to these asset accounts. Only asset accounts will be accepted. Other types will be silently dropped.  |  |
+**accounts** | Option<[**Vec<i64>**](i64.md)> | Limit the testing of the rule to these asset accounts or liabilities. Only asset accounts and liabilities will be accepted. Other types will be silently dropped.  |  |
 
 ### Return type
 
@@ -198,14 +195,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## update_rule
 
-> crate::models::RuleSingle update_rule(id, rule)
+> crate::models::RuleSingle update_rule(id, rule_update)
 Update existing rule.
 
 Update existing rule.
@@ -215,8 +212,8 @@ Update existing rule.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the object.X | [required] |
-**rule** | [**Rule**](Rule.md) | JSON array with updated rule information. See the model for the exact specifications. | [required] |
+**id** | **String** | The ID of the object.X | [required] |
+**rule_update** | [**RuleUpdate**](RuleUpdate.md) | JSON array with updated rule information. See the model for the exact specifications. | [required] |
 
 ### Return type
 
@@ -229,7 +226,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

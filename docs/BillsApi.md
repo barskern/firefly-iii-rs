@@ -27,7 +27,7 @@ Delete a bill. This will not delete any associated rules. Will not remove associ
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the bill. | [required] |
+**id** | **String** | The ID of the bill. | [required] |
 
 ### Return type
 
@@ -57,7 +57,7 @@ Get a single bill.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the bill. | [required] |
+**id** | **String** | The ID of the bill. | [required] |
 **start** | Option<**String**> | A date formatted YYYY-MM-DD. If it is are added to the request, Firefly III will calculate the appropriate payment and paid dates.  |  |
 **end** | Option<**String**> | A date formatted YYYY-MM-DD. If it is added to the request, Firefly III will calculate the appropriate payment and paid dates.  |  |
 
@@ -72,7 +72,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -89,7 +89,7 @@ This endpoint will list all attachments linked to the bill.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the bill. | [required] |
+**id** | **String** | The ID of the bill. | [required] |
 **page** | Option<**i32**> | Page number. The default pagination is 50. |  |
 
 ### Return type
@@ -103,7 +103,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -135,7 +135,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -152,7 +152,7 @@ This endpoint will list all rules that have an action to set the bill to this bi
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the bill. | [required] |
+**id** | **String** | The ID of the bill. | [required] |
 
 ### Return type
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -182,7 +182,7 @@ This endpoint will list all transactions linked to this bill.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the bill. | [required] |
+**id** | **String** | The ID of the bill. | [required] |
 **start** | Option<**String**> | A date formatted YYYY-MM-DD.  |  |
 **end** | Option<**String**> | A date formatted YYYY-MM-DD.  |  |
 **_type** | Option<[**crate::models::TransactionTypeFilter**](.md)> | Optional filter on the transaction type(s) returned |  |
@@ -198,14 +198,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## store_bill
 
-> crate::models::BillSingle store_bill(bill)
+> crate::models::BillSingle store_bill(bill_store)
 Store a new bill
 
 Creates a new bill. The data required can be submitted as a JSON body or as a list of parameters.
@@ -215,7 +215,7 @@ Creates a new bill. The data required can be submitted as a JSON body or as a li
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**bill** | [**Bill**](Bill.md) | JSON array or key=value pairs with the necessary bill information. See the model for the exact specifications. | [required] |
+**bill_store** | [**BillStore**](BillStore.md) | JSON array or key=value pairs with the necessary bill information. See the model for the exact specifications. | [required] |
 
 ### Return type
 
@@ -228,14 +228,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## update_bill
 
-> crate::models::BillSingle update_bill(id, bill)
+> crate::models::BillSingle update_bill(id, bill_update)
 Update existing bill.
 
 Update existing bill.
@@ -245,8 +245,8 @@ Update existing bill.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the bill. | [required] |
-**bill** | [**Bill**](Bill.md) | JSON array or key=value pairs with updated bill information. See the model for the exact specifications. | [required] |
+**id** | **String** | The ID of the bill. | [required] |
+**bill_update** | [**BillUpdate**](BillUpdate.md) | JSON array or key=value pairs with updated bill information. See the model for the exact specifications. | [required] |
 
 ### Return type
 
@@ -259,7 +259,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

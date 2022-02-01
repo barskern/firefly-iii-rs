@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_tag**](TagsApi.md#delete_tag) | **DELETE** /api/v1/tags/{tag} | Delete an tag.
 [**get_tag**](TagsApi.md#get_tag) | **GET** /api/v1/tags/{tag} | Get a single tag.
-[**get_tag_cloud**](TagsApi.md#get_tag_cloud) | **GET** /api/v1/tag-cloud | Returns a basic tag cloud.
 [**list_attachment_by_tag**](TagsApi.md#list_attachment_by_tag) | **GET** /api/v1/tags/{tag}/attachments | Lists all attachments.
 [**list_tag**](TagsApi.md#list_tag) | **GET** /api/v1/tags | List all tags.
 [**list_transaction_by_tag**](TagsApi.md#list_transaction_by_tag) | **GET** /api/v1/tags/{tag}/transactions | List all transactions with this tag.
@@ -27,7 +26,7 @@ Delete an tag.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**tag** | **String** | Either the tag itself or the tag ID. | [required] |
+**tag** | **String** | Either the tag itself or the tag ID. If you use the tag itself, and it contains international (non-ASCII) characters, your milage may vary. | [required] |
 
 ### Return type
 
@@ -57,7 +56,7 @@ Get a single tag.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**tag** | **String** | Either the tag itself or the tag ID. | [required] |
+**tag** | **String** | Either the tag itself or the tag ID. If you use the tag itself, and it contains international (non-ASCII) characters, your milage may vary. | [required] |
 **page** | Option<**i32**> | Page number |  |
 
 ### Return type
@@ -71,38 +70,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## get_tag_cloud
-
-> crate::models::TagCloud get_tag_cloud(start, end)
-Returns a basic tag cloud.
-
-Returns a list of tags, which can be used to draw a basic tag cloud.
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**start** | **String** | A date formatted YYYY-MM-DD.  | [required] |
-**end** | **String** | A date formatted YYYY-MM-DD.  | [required] |
-
-### Return type
-
-[**crate::models::TagCloud**](TagCloud.md)
-
-### Authorization
-
-[firefly_iii_auth](../README.md#firefly_iii_auth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -133,7 +101,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -163,7 +131,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -197,14 +165,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## store_tag
 
-> crate::models::TagSingle store_tag(tag_model)
+> crate::models::TagSingle store_tag(tag_model_store)
 Store a new tag
 
 Creates a new tag. The data required can be submitted as a JSON body or as a list of parameters.
@@ -214,7 +182,7 @@ Creates a new tag. The data required can be submitted as a JSON body or as a lis
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**tag_model** | [**TagModel**](TagModel.md) | JSON array or key=value pairs with the necessary tag information. See the model for the exact specifications. | [required] |
+**tag_model_store** | [**TagModelStore**](TagModelStore.md) | JSON array or key=value pairs with the necessary tag information. See the model for the exact specifications. | [required] |
 
 ### Return type
 
@@ -227,14 +195,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## update_tag
 
-> crate::models::TagSingle update_tag(tag, tag_model)
+> crate::models::TagSingle update_tag(tag, tag_model_update)
 Update existing tag.
 
 Update existing tag.
@@ -244,8 +212,8 @@ Update existing tag.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**tag** | **String** | Either the tag itself or the tag ID. | [required] |
-**tag_model** | [**TagModel**](TagModel.md) | JSON array with updated tag information. See the model for the exact specifications. | [required] |
+**tag** | **String** | Either the tag itself or the tag ID. If you use the tag itself, and it contains international (non-ASCII) characters, your milage may vary. | [required] |
+**tag_model_update** | [**TagModelUpdate**](TagModelUpdate.md) | JSON array with updated tag information. See the model for the exact specifications. | [required] |
 
 ### Return type
 
@@ -258,7 +226,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created_at** | Option<**String**> |  | [optional][readonly]
 **updated_at** | Option<**String**> |  | [optional][readonly]
-**enabled** | Option<**bool**> | defaults to true | [optional]
+**enabled** | Option<**bool**> | Defaults to true | [optional][default to true]
 **default** | Option<**bool**> | Make this currency the default currency. | [optional]
 **code** | **String** |  | 
 **name** | **String** |  | 

@@ -27,7 +27,7 @@ Will permanently delete an account. Any associated transactions and piggy banks 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the account. | [required] |
+**id** | **String** | The ID of the account. | [required] |
 
 ### Return type
 
@@ -57,7 +57,7 @@ Returns a single account by its ID.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the account. | [required] |
+**id** | **String** | The ID of the account. | [required] |
 **date** | Option<**String**> | A date formatted YYYY-MM-DD. When added to the request, Firefly III will show the account's balance on that day.  |  |
 
 ### Return type
@@ -71,7 +71,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -103,7 +103,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -120,7 +120,7 @@ Lists all attachments.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the account. | [required] |
+**id** | **String** | The ID of the account. | [required] |
 **page** | Option<**i32**> | Page number. The default pagination is 50. |  |
 
 ### Return type
@@ -134,7 +134,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -151,7 +151,7 @@ This endpoint returns a list of all the piggy banks connected to the account.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the account. | [required] |
+**id** | **String** | The ID of the account. | [required] |
 **page** | Option<**i32**> | Page number. The default pagination is per 50 items. |  |
 
 ### Return type
@@ -165,7 +165,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -182,7 +182,7 @@ This endpoint returns a list of all the transactions connected to the account.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the account. | [required] |
+**id** | **String** | The ID of the account. | [required] |
 **page** | Option<**i32**> | Page number. The default pagination is per 50 items. |  |
 **limit** | Option<**i32**> | Limits the number of results on one page. |  |
 **start** | Option<**String**> | A date formatted YYYY-MM-DD.  |  |
@@ -200,14 +200,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## store_account
 
-> crate::models::AccountSingle store_account(account)
+> crate::models::AccountSingle store_account(account_store)
 Create new account.
 
 Creates a new account. The data required can be submitted as a JSON body or as a list of parameters (in key=value pairs, like a webform).
@@ -217,7 +217,7 @@ Creates a new account. The data required can be submitted as a JSON body or as a
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**account** | [**Account**](Account.md) | JSON array with the necessary account information or key=value pairs. See the model for the exact specifications. | [required] |
+**account_store** | [**AccountStore**](AccountStore.md) | JSON array with the necessary account information or key=value pairs. See the model for the exact specifications. | [required] |
 
 ### Return type
 
@@ -230,14 +230,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## update_account
 
-> crate::models::AccountSingle update_account(id, account)
+> crate::models::AccountSingle update_account(id, account_update)
 Update existing account.
 
 Used to update a single account. All fields that are not submitted will be cleared (set to NULL). The model will tell you which fields are mandatory. 
@@ -247,8 +247,8 @@ Used to update a single account. All fields that are not submitted will be clear
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the account. | [required] |
-**account** | [**Account**](Account.md) | JSON array or formdata with updated account information. See the model for the exact specifications. | [required] |
+**id** | **String** | The ID of the account. | [required] |
+**account_update** | [**AccountUpdate**](AccountUpdate.md) | JSON array or formdata with updated account information. See the model for the exact specifications. | [required] |
 
 ### Return type
 
@@ -261,7 +261,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

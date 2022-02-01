@@ -24,7 +24,7 @@ Delete an available budget. Not much more to say.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the available budget. | [required] |
+**id** | **String** | The ID of the available budget. | [required] |
 
 ### Return type
 
@@ -54,7 +54,7 @@ Get a single available budget, by ID.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the available budget. | [required] |
+**id** | **String** | The ID of the available budget. | [required] |
 
 ### Return type
 
@@ -67,7 +67,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -99,14 +99,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## store_available_budget
 
-> crate::models::AvailableBudgetSingle store_available_budget(available_budget)
+> crate::models::AvailableBudgetSingle store_available_budget(available_budget_store)
 Store a new available budget
 
 Creates a new available budget for a specified period. The data required can be submitted as a JSON body or as a list of parameters. 
@@ -116,7 +116,7 @@ Creates a new available budget for a specified period. The data required can be 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**available_budget** | [**AvailableBudget**](AvailableBudget.md) | JSON array or key=value pairs with the necessary available budget information. See the model for the exact specifications. | [required] |
+**available_budget_store** | [**AvailableBudgetStore**](AvailableBudgetStore.md) | JSON array or key=value pairs with the necessary available budget information. See the model for the exact specifications. | [required] |
 
 ### Return type
 
@@ -129,14 +129,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## update_available_budget
 
-> crate::models::AvailableBudgetSingle update_available_budget(id, available_budget)
+> crate::models::AvailableBudgetSingle update_available_budget(id, available_budget_update)
 Update existing available budget, to change for example the date range of the amount or the amount itself.
 
 Update existing available budget.
@@ -146,8 +146,8 @@ Update existing available budget.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the object.X | [required] |
-**available_budget** | [**AvailableBudget**](AvailableBudget.md) | JSON array or form value with updated available budget information. See the model for the exact specifications. | [required] |
+**id** | **String** | The ID of the object.X | [required] |
+**available_budget_update** | [**AvailableBudgetUpdate**](AvailableBudgetUpdate.md) | JSON array or form value with updated available budget information. See the model for the exact specifications. | [required] |
 
 ### Return type
 
@@ -159,8 +159,8 @@ Name | Type | Description  | Required | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
+- **Content-Type**: application/vnd.api+json, application/x-www-form-urlencoded
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

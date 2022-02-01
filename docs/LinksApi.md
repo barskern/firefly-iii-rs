@@ -30,7 +30,7 @@ Will permanently delete a link type. The links between transactions will be remo
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the link type. | [required] |
+**id** | **String** | The ID of the link type. | [required] |
 
 ### Return type
 
@@ -60,7 +60,7 @@ Will permanently delete link. Transactions remain.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the transaction link. | [required] |
+**id** | **String** | The ID of the transaction link. | [required] |
 
 ### Return type
 
@@ -90,7 +90,7 @@ Returns a single link type by its ID.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the link type. | [required] |
+**id** | **String** | The ID of the link type. | [required] |
 
 ### Return type
 
@@ -103,7 +103,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -120,7 +120,7 @@ Returns a single link by its ID.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the transaction link. | [required] |
+**id** | **String** | The ID of the transaction link. | [required] |
 
 ### Return type
 
@@ -133,7 +133,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -163,7 +163,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -180,7 +180,7 @@ List all transactions under this link type, both the inward and outward transact
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the link type. | [required] |
+**id** | **String** | The ID of the link type. | [required] |
 **page** | Option<**i32**> | Page number. The default pagination is per 50 items. |  |
 **start** | Option<**String**> | A date formatted YYYY-MM-DD, to limit the results.  |  |
 **end** | Option<**String**> | A date formatted YYYY-MM-DD, to limit the results.  |  |
@@ -227,7 +227,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -257,14 +257,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## store_transaction_link
 
-> crate::models::TransactionLinkSingle store_transaction_link(transaction_link)
+> crate::models::TransactionLinkSingle store_transaction_link(transaction_link_store)
 Create a new link between transactions
 
 Store a new link between two transactions. For this end point you need the journal_id from a transaction.
@@ -274,7 +274,7 @@ Store a new link between two transactions. For this end point you need the journ
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**transaction_link** | [**TransactionLink**](TransactionLink.md) | JSON array with the necessary link type information or key=value pairs. See the model for the exact specifications. | [required] |
+**transaction_link_store** | [**TransactionLinkStore**](TransactionLinkStore.md) | JSON array with the necessary link type information or key=value pairs. See the model for the exact specifications. | [required] |
 
 ### Return type
 
@@ -287,14 +287,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## update_link_type
 
-> crate::models::LinkTypeSingle update_link_type(id, link_type)
+> crate::models::LinkTypeSingle update_link_type(id, link_type_update)
 Update existing link type.
 
 Used to update a single link type. All fields that are not submitted will be cleared (set to NULL). The model will tell you which fields are mandatory. You cannot update some of the system provided link types, indicated by the editable=false flag when you list it. 
@@ -304,8 +304,8 @@ Used to update a single link type. All fields that are not submitted will be cle
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the link type. | [required] |
-**link_type** | [**LinkType**](LinkType.md) | JSON array or formdata with updated link type information. See the model for the exact specifications. | [required] |
+**id** | **String** | The ID of the link type. | [required] |
+**link_type_update** | [**LinkTypeUpdate**](LinkTypeUpdate.md) | JSON array or formdata with updated link type information. See the model for the exact specifications. | [required] |
 
 ### Return type
 
@@ -318,14 +318,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## update_transaction_link
 
-> crate::models::TransactionLinkSingle update_transaction_link(id, transaction_link)
+> crate::models::TransactionLinkSingle update_transaction_link(id, transaction_link_update)
 Update an existing link between transactions.
 
 Used to update a single existing link. 
@@ -335,8 +335,8 @@ Used to update a single existing link.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the transaction link. | [required] |
-**transaction_link** | [**TransactionLink**](TransactionLink.md) | JSON array or formdata with updated link type information. See the model for the exact specifications. | [required] |
+**id** | **String** | The ID of the transaction link. | [required] |
+**transaction_link_update** | [**TransactionLinkUpdate**](TransactionLinkUpdate.md) | JSON array or formdata with updated link type information. See the model for the exact specifications. | [required] |
 
 ### Return type
 
@@ -349,7 +349,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **created_at** | Option<**String**> |  | [optional][readonly]
 **updated_at** | Option<**String**> |  | [optional][readonly]
 **tag** | **String** | The tag | 
-**date** | Option<[**String**](string.md)> | The date to which the tag is applicable. | [optional]
+**date** | Option<**String**> | The date to which the tag is applicable. | [optional]
 **description** | Option<**String**> |  | [optional]
 **latitude** | Option<**f64**> | Latitude of the tag's location, if applicable. Can be used to draw a map. | [optional]
 **longitude** | Option<**f64**> | Latitude of the tag's location, if applicable. Can be used to draw a map. | [optional]
