@@ -1,4 +1,4 @@
 templateDir: /local/templates
 additionalProperties:
   library: reqwest
-  packageName: ff3
+  packageName: firefly-iii
