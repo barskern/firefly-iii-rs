@@ -1,8 +1,15 @@
 [package]
-name = "ff3"
-version = "1.5.5"
+name = "firefly-iii"
+version = "0.3.0"
 authors = ["OpenAPI Generator team and contributors"]
 edition = "2018"
+description = "Rust API client for firefly-iii"
+license = "AGPL-3.0"
+documentation = "https://docs.rs/firefly-iii"
+repository = "https://github.com/barskern/firefly-iii-rs"
+readme = "README.md"
+keywords = ["openapi", "economy", "client"]
+categories = ["api-bindings"]
 
 [dependencies]
 serde = "^1.0"
