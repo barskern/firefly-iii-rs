@@ -6,12 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created_at** | Option<**String**> |  | [optional][readonly]
 **updated_at** | Option<**String**> |  | [optional][readonly]
-**_type** | **String** |  | 
-**title** | **String** |  | 
+**_type** | Option<[**crate::models::RecurrenceTransactionType**](RecurrenceTransactionType.md)> |  | [optional]
+**title** | Option<**String**> |  | [optional]
 **description** | Option<**String**> | Not to be confused with the description of the actual transaction(s) being created. | [optional]
-**first_date** | [**String**](string.md) | First time the recurring transaction will fire. Must be after today. | 
-**latest_date** | Option<[**String**](string.md)> | First time the recurring transaction will fire. Must be after today. | [optional]
-**repeat_until** | Option<[**String**](string.md)> | Date until the recurring transaction can fire. Use either this field or repetitions. | [optional]
+**first_date** | Option<**String**> | First time the recurring transaction will fire. Must be after today. | [optional]
+**latest_date** | Option<**String**> | Last time the recurring transaction has fired. | [optional][readonly]
+**repeat_until** | Option<**String**> | Date until the recurring transaction can fire. Use either this field or repetitions. | [optional]
 **nr_of_repetitions** | Option<**i32**> | Max number of created transactions. Use either this field or repeat_until. | [optional]
 **apply_rules** | Option<**bool**> | Whether or not to fire the rules after the creation of a transaction. | [optional]
 **active** | Option<**bool**> | If the recurrence is even active. | [optional]

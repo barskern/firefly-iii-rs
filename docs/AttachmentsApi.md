@@ -26,7 +26,7 @@ With this endpoint you delete an attachment, including any stored file data.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the single. | [required] |
+**id** | **String** | The ID of the single. | [required] |
 
 ### Return type
 
@@ -56,7 +56,7 @@ This endpoint allows you to download the binary content of a transaction. It wil
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the attachment. | [required] |
+**id** | **String** | The ID of the attachment. | [required] |
 
 ### Return type
 
@@ -86,7 +86,7 @@ Get a single attachment. This endpoint only returns the available metadata for t
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the attachment. | [required] |
+**id** | **String** | The ID of the attachment. | [required] |
 
 ### Return type
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -129,14 +129,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## store_attachment
 
-> crate::models::AttachmentSingle store_attachment(attachment)
+> crate::models::AttachmentSingle store_attachment(attachment_store)
 Store a new attachment.
 
 Creates a new attachment. The data required can be submitted as a JSON body or as a list of parameters. You cannot use this endpoint to upload the actual file data (see below). This endpoint only creates the attachment object. 
@@ -146,7 +146,7 @@ Creates a new attachment. The data required can be submitted as a JSON body or a
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**attachment** | [**Attachment**](Attachment.md) | JSON array or key=value pairs with the necessary attachment information. See the model for the exact specifications. | [required] |
+**attachment_store** | [**AttachmentStore**](AttachmentStore.md) | JSON array or key=value pairs with the necessary attachment information. See the model for the exact specifications. | [required] |
 
 ### Return type
 
@@ -159,14 +159,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## update_attachment
 
-> crate::models::AttachmentSingle update_attachment(id, attachment)
+> crate::models::AttachmentSingle update_attachment(id, attachment_update)
 Update existing attachment.
 
 Update the meta data for an existing attachment. This endpoint does not allow you to upload or download data. For that, see below. 
@@ -176,8 +176,8 @@ Update the meta data for an existing attachment. This endpoint does not allow yo
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the attachment. | [required] |
-**attachment** | [**Attachment**](Attachment.md) | JSON array with updated attachment information. See the model for the exact specifications. | [required] |
+**id** | **String** | The ID of the attachment. | [required] |
+**attachment_update** | [**AttachmentUpdate**](AttachmentUpdate.md) | JSON array with updated attachment information. See the model for the exact specifications. | [required] |
 
 ### Return type
 
@@ -190,7 +190,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -207,7 +207,7 @@ Use this endpoint to upload (and possible overwrite) the file contents of an att
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the attachment. | [required] |
+**id** | **String** | The ID of the attachment. | [required] |
 **body** | Option<**std::path::PathBuf**> |  |  |
 
 ### Return type

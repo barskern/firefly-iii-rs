@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## search_accounts
 
-> crate::models::AccountArray search_accounts(query, _type, field, page)
+> crate::models::AccountArray search_accounts(query, field, page, _type)
 Search for accounts
 
 Search for accounts
@@ -22,9 +22,9 @@ Search for accounts
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **query** | **String** | The query you wish to search for. | [required] |
-**_type** | [**crate::models::AccountTypeFilter**](.md) | The type of accounts you wish to limit the search to. | [required] |
 **field** | [**crate::models::AccountSearchFieldFilter**](.md) | The account field(s) you want to search in. | [required] |
 **page** | Option<**i32**> | Page number. The default pagination is 50 |  |
+**_type** | Option<[**crate::models::AccountTypeFilter**](.md)> | The type of accounts you wish to limit the search to. |  |
 
 ### Return type
 
@@ -37,7 +37,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -47,7 +47,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::TransactionArray search_transactions(query, page)
 Search for transactions
 
-Search for transactions
+Searches through the users transactions.
 
 ### Parameters
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

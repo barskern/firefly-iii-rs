@@ -1,46 +1,57 @@
-use reqwest;
-use serde_json;
+use std::error;
+use std::fmt;
+
+#[derive(Debug, Clone)]
+pub struct ResponseContent<T> {
+    pub status: reqwest::StatusCode,
+    pub content: String,
+    pub entity: Option<T>,
+}
 
 #[derive(Debug)]
-pub enum Error {
+pub enum Error<T> {
     Reqwest(reqwest::Error),
     Serde(serde_json::Error),
     Io(std::io::Error),
+    ResponseError(ResponseContent<T>),
 }
 
-impl std::fmt::Display for Error {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            Self::Reqwest(e) => write!(f, "reqwest error: {}", e),
-            Self::Serde(e) => write!(f, "serde error: {}", e),
-            Self::Io(e) => write!(f, "i/o error: {}", e),
-        }
+impl <T> fmt::Display for Error<T> {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let (module, e) = match self {
+            Error::Reqwest(e) => ("reqwest", e.to_string()),
+            Error::Serde(e) => ("serde", e.to_string()),
+            Error::Io(e) => ("IO", e.to_string()),
+            Error::ResponseError(e) => ("response", format!("status code {}", e.status)),
+        };
+        write!(f, "error in {}: {}", module, e)
     }
 }
 
-impl std::error::Error for Error {
-    fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
-        match self {
-            Self::Reqwest(e) => Some(e),
-            Self::Serde(e) => Some(e),
-            Self::Io(e) => Some(e),
-        }
+impl <T: fmt::Debug> error::Error for Error<T> {
+    fn source(&self) -> Option<&(dyn error::Error + 'static)> {
+        Some(match self {
+            Error::Reqwest(e) => e,
+            Error::Serde(e) => e,
+            Error::Io(e) => e,
+            Error::ResponseError(_) => return None,
+        })
     }
 }
 
-impl From<reqwest::Error> for Error {
+impl <T> From<reqwest::Error> for Error<T> {
     fn from(e: reqwest::Error) -> Self {
         Error::Reqwest(e)
     }
 }
 
-impl From<serde_json::Error> for Error {
+impl <T> From<serde_json::Error> for Error<T> {
     fn from(e: serde_json::Error) -> Self {
         Error::Serde(e)
     }
 }
 
-impl From<std::io::Error> for Error {
+impl <T> From<std::io::Error> for Error<T> {
     fn from(e: std::io::Error) -> Self {
         Error::Io(e)
     }
@@ -50,56 +61,31 @@ pub fn urlencode<T: AsRef<str>>(s: T) -> String {
     ::url::form_urlencoded::byte_serialize(s.as_ref().as_bytes()).collect()
 }
 
-mod about_api;
-pub use self::about_api::{ AboutApi, AboutApiClient };
-mod accounts_api;
-pub use self::accounts_api::{ AccountsApi, AccountsApiClient };
-mod attachments_api;
-pub use self::attachments_api::{ AttachmentsApi, AttachmentsApiClient };
-mod autocomplete_api;
-pub use self::autocomplete_api::{ AutocompleteApi, AutocompleteApiClient };
-mod available_budgets_api;
-pub use self::available_budgets_api::{ AvailableBudgetsApi, AvailableBudgetsApiClient };
-mod bills_api;
-pub use self::bills_api::{ BillsApi, BillsApiClient };
-mod budgets_api;
-pub use self::budgets_api::{ BudgetsApi, BudgetsApiClient };
-mod categories_api;
-pub use self::categories_api::{ CategoriesApi, CategoriesApiClient };
-mod charts_api;
-pub use self::charts_api::{ ChartsApi, ChartsApiClient };
-mod configuration_api;
-pub use self::configuration_api::{ ConfigurationApi, ConfigurationApiClient };
-mod currencies_api;
-pub use self::currencies_api::{ CurrenciesApi, CurrenciesApiClient };
-mod currency_exchange_rates_api;
-pub use self::currency_exchange_rates_api::{ CurrencyExchangeRatesApi, CurrencyExchangeRatesApiClient };
-mod data_api;
-pub use self::data_api::{ DataApi, DataApiClient };
-mod import_api;
-pub use self::import_api::{ ImportApi, ImportApiClient };
-mod links_api;
-pub use self::links_api::{ LinksApi, LinksApiClient };
-mod piggy_banks_api;
-pub use self::piggy_banks_api::{ PiggyBanksApi, PiggyBanksApiClient };
-mod preferences_api;
-pub use self::preferences_api::{ PreferencesApi, PreferencesApiClient };
-mod recurrences_api;
-pub use self::recurrences_api::{ RecurrencesApi, RecurrencesApiClient };
-mod rule_groups_api;
-pub use self::rule_groups_api::{ RuleGroupsApi, RuleGroupsApiClient };
-mod rules_api;
-pub use self::rules_api::{ RulesApi, RulesApiClient };
-mod search_api;
-pub use self::search_api::{ SearchApi, SearchApiClient };
-mod summary_api;
-pub use self::summary_api::{ SummaryApi, SummaryApiClient };
-mod tags_api;
-pub use self::tags_api::{ TagsApi, TagsApiClient };
-mod transactions_api;
-pub use self::transactions_api::{ TransactionsApi, TransactionsApiClient };
-mod users_api;
-pub use self::users_api::{ UsersApi, UsersApiClient };
+pub mod about_api;
+pub mod accounts_api;
+pub mod attachments_api;
+pub mod autocomplete_api;
+pub mod available_budgets_api;
+pub mod bills_api;
+pub mod budgets_api;
+pub mod categories_api;
+pub mod charts_api;
+pub mod configuration_api;
+pub mod currencies_api;
+pub mod data_api;
+pub mod insight_api;
+pub mod links_api;
+pub mod object_groups_api;
+pub mod piggy_banks_api;
+pub mod preferences_api;
+pub mod recurrences_api;
+pub mod rule_groups_api;
+pub mod rules_api;
+pub mod search_api;
+pub mod summary_api;
+pub mod tags_api;
+pub mod transactions_api;
+pub mod users_api;
+pub mod webhooks_api;
 
 pub mod configuration;
-pub mod client;

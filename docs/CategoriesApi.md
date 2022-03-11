@@ -26,7 +26,7 @@ Delete a category. Transactions will not be removed.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the category. | [required] |
+**id** | **String** | The ID of the category. | [required] |
 
 ### Return type
 
@@ -56,7 +56,7 @@ Get a single category.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the category. | [required] |
+**id** | **String** | The ID of the category. | [required] |
 **start** | Option<**String**> | A date formatted YYYY-MM-DD, to show spent and earned info.  |  |
 **end** | Option<**String**> | A date formatted YYYY-MM-DD, to show spent and earned info.  |  |
 
@@ -71,7 +71,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -88,7 +88,7 @@ Lists all attachments.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the category. | [required] |
+**id** | **String** | The ID of the category. | [required] |
 **page** | Option<**i32**> | Page number. The default pagination is 50. |  |
 
 ### Return type
@@ -102,7 +102,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -149,7 +149,7 @@ List all transactions in a category, optionally limited to the date ranges speci
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the category. | [required] |
+**id** | **String** | The ID of the category. | [required] |
 **page** | Option<**i32**> | Page number. The default pagination is per 50. |  |
 **start** | Option<**String**> | A date formatted YYYY-MM-DD, to limit the result list.  |  |
 **end** | Option<**String**> | A date formatted YYYY-MM-DD, to limit the result list.  |  |
@@ -166,7 +166,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -196,14 +196,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## update_category
 
-> crate::models::CategorySingle update_category(id, category)
+> crate::models::CategorySingle update_category(id, category_update)
 Update existing category.
 
 Update existing category.
@@ -213,8 +213,8 @@ Update existing category.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the category. | [required] |
-**category** | [**Category**](Category.md) | JSON array with updated category information. See the model for the exact specifications. | [required] |
+**id** | **String** | The ID of the category. | [required] |
+**category_update** | [**CategoryUpdate**](CategoryUpdate.md) | JSON array with updated category information. See the model for the exact specifications. | [required] |
 
 ### Return type
 
@@ -227,7 +227,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

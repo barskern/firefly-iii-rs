@@ -15,7 +15,6 @@ Method | HTTP request | Description
 [**list_bill_by_currency**](CurrenciesApi.md#list_bill_by_currency) | **GET** /api/v1/currencies/{code}/bills | List all bills with this currency.
 [**list_budget_limit_by_currency**](CurrenciesApi.md#list_budget_limit_by_currency) | **GET** /api/v1/currencies/{code}/budget_limits | List all budget limits with this currency
 [**list_currency**](CurrenciesApi.md#list_currency) | **GET** /api/v1/currencies | List all currencies.
-[**list_exchange_rate_by_currency**](CurrenciesApi.md#list_exchange_rate_by_currency) | **GET** /api/v1/currencies/{code}/cer | List all known exchange rates with (from or to) this currency.
 [**list_recurrence_by_currency**](CurrenciesApi.md#list_recurrence_by_currency) | **GET** /api/v1/currencies/{code}/recurrences | List all recurring transactions with this currency.
 [**list_rule_by_currency**](CurrenciesApi.md#list_rule_by_currency) | **GET** /api/v1/currencies/{code}/rules | List all rules with this currency.
 [**list_transaction_by_currency**](CurrenciesApi.md#list_transaction_by_currency) | **GET** /api/v1/currencies/{code}/transactions | List all transactions with this currency.
@@ -29,7 +28,7 @@ Method | HTTP request | Description
 > crate::models::CurrencySingle default_currency(code)
 Make currency default currency.
 
-Make this currency the default currency. If the currency is not enabled, it will be enabled as well.
+Make this currency the default currency for the user. If the currency is not enabled, it will be enabled as well.
 
 ### Parameters
 
@@ -49,7 +48,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -109,7 +108,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -139,7 +138,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -169,7 +168,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -229,7 +228,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -260,7 +259,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -291,7 +290,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -324,7 +323,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -354,41 +353,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## list_exchange_rate_by_currency
-
-> crate::models::ExchangeRateArray list_exchange_rate_by_currency(code, page, date, start, end)
-List all known exchange rates with (from or to) this currency.
-
-List all known exchange rates.
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**code** | **String** | The currency code. | [required] |
-**page** | Option<**i32**> | Page number. The default pagination is 50. |  |
-**date** | Option<**String**> | The date of which you want to know the exchange rate  |  |
-**start** | Option<**String**> | Use this instead of the date parameter to search for a range of currency exchange values.  |  |
-**end** | Option<**String**> | Use this instead of the date parameter to search for a range of currency exchange values.  |  |
-
-### Return type
-
-[**crate::models::ExchangeRateArray**](ExchangeRateArray.md)
-
-### Authorization
-
-[firefly_iii_auth](../README.md#firefly_iii_auth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -419,7 +384,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -450,14 +415,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## list_transaction_by_currency
 
-> crate::models::TransactionArray list_transaction_by_currency(code, page, start_date, end_date, _type)
+> crate::models::TransactionArray list_transaction_by_currency(code, page, start, end, _type)
 List all transactions with this currency.
 
 List all transactions with this currency.
@@ -469,8 +434,8 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **code** | **String** | The currency code. | [required] |
 **page** | Option<**i32**> | Page number. The default pagination is per 50. |  |
-**start_date** | Option<**String**> | A date formatted YYYY-MM-DD, to limit the list of transactions.  |  |
-**end_date** | Option<**String**> | A date formatted YYYY-MM-DD, to limit the list of transactions.  |  |
+**start** | Option<**String**> | A date formatted YYYY-MM-DD, to limit the list of transactions.  |  |
+**end** | Option<**String**> | A date formatted YYYY-MM-DD, to limit the list of transactions.  |  |
 **_type** | Option<[**crate::models::TransactionTypeFilter**](.md)> | Optional filter on the transaction type(s) returned |  |
 
 ### Return type
@@ -484,14 +449,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## store_currency
 
-> crate::models::CurrencySingle store_currency(currency)
+> crate::models::CurrencySingle store_currency(currency_store)
 Store a new currency
 
 Creates a new currency. The data required can be submitted as a JSON body or as a list of parameters.
@@ -501,7 +466,7 @@ Creates a new currency. The data required can be submitted as a JSON body or as 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**currency** | [**Currency**](Currency.md) | JSON array or key=value pairs with the necessary currency information. See the model for the exact specifications. | [required] |
+**currency_store** | [**CurrencyStore**](CurrencyStore.md) | JSON array or key=value pairs with the necessary currency information. See the model for the exact specifications. | [required] |
 
 ### Return type
 
@@ -514,14 +479,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## update_currency
 
-> crate::models::CurrencySingle update_currency(code, currency)
+> crate::models::CurrencySingle update_currency(code, currency_update)
 Update existing currency.
 
 Update existing currency.
@@ -532,7 +497,7 @@ Update existing currency.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **code** | **String** | The currency code. | [required] |
-**currency** | [**Currency**](Currency.md) | JSON array with updated currency information. See the model for the exact specifications. | [required] |
+**currency_update** | [**CurrencyUpdate**](CurrencyUpdate.md) | JSON array with updated currency information. See the model for the exact specifications. | [required] |
 
 ### Return type
 
@@ -544,7 +509,7 @@ Name | Type | Description  | Required | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, application/x-www-form-urlencoded
+- **Content-Type**: application/vnd.api+json, application/x-www-form-urlencoded
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

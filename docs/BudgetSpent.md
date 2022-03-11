@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sum** | Option<**String**> | The amount spent. | [optional]
-**currency_id** | Option<**i32**> |  | [optional]
+**currency_id** | Option<**String**> |  | [optional]
 **currency_code** | Option<**String**> |  | [optional]
 **currency_symbol** | Option<**String**> |  | [optional]
 **currency_decimal_places** | Option<**i32**> | Number of decimals supported by the currency | [optional]

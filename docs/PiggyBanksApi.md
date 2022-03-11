@@ -26,7 +26,7 @@ Delete a piggy bank.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the piggy bank. | [required] |
+**id** | **String** | The ID of the piggy bank. | [required] |
 
 ### Return type
 
@@ -56,7 +56,7 @@ Get a single piggy bank.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the piggy bank. | [required] |
+**id** | **String** | The ID of the piggy bank. | [required] |
 
 ### Return type
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -86,7 +86,7 @@ Lists all attachments.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the piggy bank. | [required] |
+**id** | **String** | The ID of the piggy bank. | [required] |
 **page** | Option<**i32**> | Page number. The default pagination is 50. |  |
 
 ### Return type
@@ -100,7 +100,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -117,7 +117,7 @@ List all events linked to a piggy bank (adding and removing money).
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the piggy bank | [required] |
+**id** | **String** | The ID of the piggy bank | [required] |
 **page** | Option<**i32**> | Page number. The default pagination is 50. |  |
 
 ### Return type
@@ -131,7 +131,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -161,14 +161,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## store_piggy_bank
 
-> crate::models::PiggyBankSingle store_piggy_bank(piggy_bank)
+> crate::models::PiggyBankSingle store_piggy_bank(piggy_bank_store)
 Store a new piggy bank
 
 Creates a new piggy bank. The data required can be submitted as a JSON body or as a list of parameters.
@@ -178,7 +178,7 @@ Creates a new piggy bank. The data required can be submitted as a JSON body or a
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**piggy_bank** | [**PiggyBank**](PiggyBank.md) | JSON array or key=value pairs with the necessary piggy bank information. See the model for the exact specifications. | [required] |
+**piggy_bank_store** | [**PiggyBankStore**](PiggyBankStore.md) | JSON array or key=value pairs with the necessary piggy bank information. See the model for the exact specifications. | [required] |
 
 ### Return type
 
@@ -191,14 +191,14 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## update_piggy_bank
 
-> crate::models::PiggyBankSingle update_piggy_bank(id, piggy_bank)
+> crate::models::PiggyBankSingle update_piggy_bank(id, piggy_bank_update)
 Update existing piggy bank.
 
 Update existing piggy bank.
@@ -208,8 +208,8 @@ Update existing piggy bank.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**id** | **i32** | The ID of the piggy bank | [required] |
-**piggy_bank** | [**PiggyBank**](PiggyBank.md) | JSON array with updated piggy bank information. See the model for the exact specifications. | [required] |
+**id** | **String** | The ID of the piggy bank | [required] |
+**piggy_bank_update** | [**PiggyBankUpdate**](PiggyBankUpdate.md) | JSON array with updated piggy bank information. See the model for the exact specifications. | [required] |
 
 ### Return type
 
@@ -222,7 +222,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
