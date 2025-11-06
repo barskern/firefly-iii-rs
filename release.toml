@@ -1,7 +1,6 @@
 sign-commit = true
 
 pre-release-commit-message = "Version {{version}}"
-post-release-commit-message = "Starting next development version {{next_version}}"
 tag-message = "{{crate_name}} version {{version}}"
 
 pre-release-replacements = [
