@@ -1,4 +1,8 @@
 {{>partial_header}}
+
+use crate::models::{self, *};
+use std::fmt;
+
 {{#models}}
 {{#model}}
 {{#description}}
@@ -17,12 +21,12 @@ pub enum {{{classname}}} {
 {{/enumVars}}{{/allowableValues}}
 }
 
-impl ToString for {{{classname}}} {
-    fn to_string(&self) -> String {
+impl std::fmt::Display for {{{classname}}} {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
             {{#allowableValues}}
             {{#enumVars}}
-            Self::{{{name}}} => String::from("{{{value}}}"),
+            Self::{{{name}}} => write!(f, "{{{value}}}"),
             {{/enumVars}}
             {{/allowableValues}}
         }
@@ -84,6 +88,15 @@ impl {{{classname}}} {
             {{#vars}}
             {{{name}}}{{^required}}{{#isArray}}: None{{/isArray}}{{#isMap}}: None{{/isMap}}{{^isContainer}}: None{{/isContainer}}{{/required}}{{#required}}{{#isModel}}: {{{name}}}{{/isModel}}{{/required}},
             {{/vars}}
+        }
+    }
+}
+
+impl fmt::Display for {{{classname}}} {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match serde_json::to_string(self) {
+            Ok(json) => write!(f, "{}", json),
+            Err(_) => write!(f, "{{{{}}}}"),
         }
     }
 }
