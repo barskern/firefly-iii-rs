@@ -4,7 +4,7 @@ set -euo pipefail
 sudo docker run --rm \
     --user $(id -u):$(id -g) \
     -v $PWD:/local openapitools/openapi-generator-cli generate \
-    -i /local/firefly-iii-1.5.5.yaml \
+    -i /local/firefly-iii-6.4.14-v1.yaml \
     -c /local/config.yaml \
     -g rust \
     -o /local

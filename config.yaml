@@ -2,3 +2,4 @@ templateDir: /local/templates
 additionalProperties:
   library: reqwest
   packageName: firefly-iii
+  packageVersion: 0.2.5
