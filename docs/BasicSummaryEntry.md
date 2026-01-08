@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **currency_code** | Option<**String**> |  | [optional]
 **currency_symbol** | Option<**String**> |  | [optional]
 **currency_decimal_places** | Option<**i32**> | Number of decimals for the associated currency. | [optional]
+**no_available_budgets** | Option<**bool**> | True if there are no available budgets available. | [optional]
 **value_parsed** | Option<**String**> | The amount formatted according to the users locale | [optional]
 **local_icon** | Option<**String**> | Reference to a font-awesome icon without the fa- part. | [optional]
 **sub_title** | Option<**String**> | A short explanation of the amounts origin. Already formatted according to the locale of the user or translated, if relevant. | [optional]

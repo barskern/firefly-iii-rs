@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **name** | Option<**String**> | This is the name of the object. | [optional]
 **difference** | Option<**String**> | The total amount transferred between start date and end date, a number defined as a string, for this asset account. | [optional]
 **difference_float** | Option<**f64**> | The total amount transferred between start date and end date, a number as a float, for this asset account. May have rounding errors. | [optional]
-**_in** | Option<**String**> | The total amount transferred TO this account between start date and end date, a number defined as a string, for this asset account. | [optional]
+**r#in** | Option<**String**> | The total amount transferred TO this account between start date and end date, a number defined as a string, for this asset account. | [optional]
 **in_float** | Option<**f64**> | The total amount transferred FROM this account between start date and end date, a number as a float, for this asset account. May have rounding errors. | [optional]
 **out** | Option<**String**> | The total amount transferred FROM this account between start date and end date, a number defined as a string, for this asset account. | [optional]
 **out_float** | Option<**f64**> | The total amount transferred TO this account between start date and end date, a number as a float, for this asset account. May have rounding errors. | [optional]

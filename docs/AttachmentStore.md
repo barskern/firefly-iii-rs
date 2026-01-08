@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **filename** | **String** |  | 
-**attachable_type** | [**crate::models::AttachableType**](AttachableType.md) |  | 
+**attachable_type** | [**models::AttachableType**](AttachableType.md) |  | 
 **attachable_id** | **String** | ID of the model this attachment is linked to. | 
 **title** | Option<**String**> |  | [optional]
 **notes** | Option<**String**> |  | [optional]

@@ -1,21 +1,21 @@
 # \ObjectGroupsApi
 
-All URIs are relative to *https://demo.firefly-iii.org*
+All URIs are relative to *https://demo.firefly-iii.org/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_object_group**](ObjectGroupsApi.md#delete_object_group) | **DELETE** /api/v1/object_groups/{id} | Delete a object group.
-[**get_object_group**](ObjectGroupsApi.md#get_object_group) | **GET** /api/v1/object_groups/{id} | Get a single object group.
-[**list_bill_by_object_group**](ObjectGroupsApi.md#list_bill_by_object_group) | **GET** /api/v1/object_groups/{id}/bills | List all bills with this object group.
-[**list_object_groups**](ObjectGroupsApi.md#list_object_groups) | **GET** /api/v1/object_groups | List all oject groups.
-[**list_piggy_bank_by_object_group**](ObjectGroupsApi.md#list_piggy_bank_by_object_group) | **GET** /api/v1/object_groups/{id}/piggy_banks | List all piggy banks related to the object group.
-[**update_object_group**](ObjectGroupsApi.md#update_object_group) | **PUT** /api/v1/object_groups/{id} | Update existing object group.
+[**delete_object_group**](ObjectGroupsApi.md#delete_object_group) | **DELETE** /v1/object-groups/{id} | Delete a object group.
+[**get_object_group**](ObjectGroupsApi.md#get_object_group) | **GET** /v1/object-groups/{id} | Get a single object group.
+[**list_bill_by_object_group**](ObjectGroupsApi.md#list_bill_by_object_group) | **GET** /v1/object-groups/{id}/bills | List all bills with this object group.
+[**list_object_groups**](ObjectGroupsApi.md#list_object_groups) | **GET** /v1/object-groups | List all object groups.
+[**list_piggy_bank_by_object_group**](ObjectGroupsApi.md#list_piggy_bank_by_object_group) | **GET** /v1/object-groups/{id}/piggy-banks | List all piggy banks related to the object group.
+[**update_object_group**](ObjectGroupsApi.md#update_object_group) | **PUT** /v1/object-groups/{id} | Update existing object group.
 
 
 
 ## delete_object_group
 
-> delete_object_group(id)
+> delete_object_group(id, x_trace_id)
 Delete a object group.
 
 Delete a object group.
@@ -26,6 +26,7 @@ Delete a object group.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **String** | The ID of the object group. | [required] |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
 
 ### Return type
 
@@ -33,19 +34,19 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## get_object_group
 
-> crate::models::ObjectGroupSingle get_object_group(id)
+> models::ObjectGroupSingle get_object_group(id, x_trace_id)
 Get a single object group.
 
 Get a single object group.
@@ -56,26 +57,27 @@ Get a single object group.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **String** | The ID of the object group. | [required] |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
 
 ### Return type
 
-[**crate::models::ObjectGroupSingle**](ObjectGroupSingle.md)
+[**models::ObjectGroupSingle**](ObjectGroupSingle.md)
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## list_bill_by_object_group
 
-> crate::models::BillArray list_bill_by_object_group(id, page)
+> models::BillArray list_bill_by_object_group(id, x_trace_id, limit, page)
 List all bills with this object group.
 
 List all bills with this object group.
@@ -86,57 +88,61 @@ List all bills with this object group.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **String** | The ID of the account. | [required] |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
+**limit** | Option<**i32**> | Number of items per page. The default pagination is per 50 items. |  |
 **page** | Option<**i32**> | Page number. The default pagination is per 50 items. |  |
 
 ### Return type
 
-[**crate::models::BillArray**](BillArray.md)
+[**models::BillArray**](BillArray.md)
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## list_object_groups
 
-> crate::models::ObjectGroupArray list_object_groups(page)
-List all oject groups.
+> models::ObjectGroupArray list_object_groups(x_trace_id, limit, page)
+List all object groups.
 
-List all oject groups.
+List all object groups.
 
 ### Parameters
 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**page** | Option<**i32**> | Page number. The default pagination is 50. |  |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
+**limit** | Option<**i32**> | Number of items per page. The default pagination is per 50 items. |  |
+**page** | Option<**i32**> | Page number. The default pagination is per 50 items. |  |
 
 ### Return type
 
-[**crate::models::ObjectGroupArray**](ObjectGroupArray.md)
+[**models::ObjectGroupArray**](ObjectGroupArray.md)
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## list_piggy_bank_by_object_group
 
-> crate::models::PiggyBankArray list_piggy_bank_by_object_group(id, page)
+> models::PiggyBankArray list_piggy_bank_by_object_group(id, x_trace_id, limit, page)
 List all piggy banks related to the object group.
 
 This endpoint returns a list of all the piggy banks connected to the object group. 
@@ -147,27 +153,29 @@ This endpoint returns a list of all the piggy banks connected to the object grou
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **String** | The ID of the account. | [required] |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
+**limit** | Option<**i32**> | Number of items per page. The default pagination is per 50 items. |  |
 **page** | Option<**i32**> | Page number. The default pagination is per 50 items. |  |
 
 ### Return type
 
-[**crate::models::PiggyBankArray**](PiggyBankArray.md)
+[**models::PiggyBankArray**](PiggyBankArray.md)
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## update_object_group
 
-> crate::models::ObjectGroupSingle update_object_group(id, object_group_update)
+> models::ObjectGroupSingle update_object_group(id, object_group_update, x_trace_id)
 Update existing object group.
 
 Update existing object group.
@@ -179,14 +187,15 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **String** | The ID of the object group | [required] |
 **object_group_update** | [**ObjectGroupUpdate**](ObjectGroupUpdate.md) | JSON array with updated piggy bank information. See the model for the exact specifications. | [required] |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
 
 ### Return type
 
-[**crate::models::ObjectGroupSingle**](ObjectGroupSingle.md)
+[**models::ObjectGroupSingle**](ObjectGroupSingle.md)
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 

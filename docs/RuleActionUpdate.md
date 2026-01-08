@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_type** | Option<[**crate::models::RuleActionKeyword**](RuleActionKeyword.md)> |  | [optional]
+**r#type** | Option<[**models::RuleActionKeyword**](RuleActionKeyword.md)> |  | [optional]
 **value** | Option<**String**> | The accompanying value the action will set, change or update. Can be empty, but for some types this value is mandatory. | [optional]
 **order** | Option<**i32**> | Order of the action | [optional]
 **active** | Option<**bool**> | If the action is active. | [optional]

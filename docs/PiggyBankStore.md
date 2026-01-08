@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** |  | 
-**account_id** | **String** | The ID of the asset account this piggy bank is connected to. | 
-**target_amount** | **String** |  | 
+**accounts** | Option<[**Vec<models::PiggyBankAccountStore>**](PiggyBankAccountStore.md)> |  | [optional]
+**target_amount** | Option<**String**> |  | 
 **current_amount** | Option<**String**> |  | [optional]
-**start_date** | Option<[**String**](string.md)> | The date you started with this piggy bank. | [optional]
+**start_date** | [**String**](string.md) | The date you started with this piggy bank. | 
 **target_date** | Option<[**String**](string.md)> | The date you intend to finish saving money. | [optional]
 **order** | Option<**i32**> |  | [optional]
 **active** | Option<**bool**> |  | [optional][readonly]

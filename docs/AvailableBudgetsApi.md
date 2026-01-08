@@ -1,50 +1,17 @@
 # \AvailableBudgetsApi
 
-All URIs are relative to *https://demo.firefly-iii.org*
+All URIs are relative to *https://demo.firefly-iii.org/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_available_budget**](AvailableBudgetsApi.md#delete_available_budget) | **DELETE** /api/v1/available_budgets/{id} | Delete an available budget.
-[**get_available_budget**](AvailableBudgetsApi.md#get_available_budget) | **GET** /api/v1/available_budgets/{id} | Get a single available budget.
-[**list_available_budget**](AvailableBudgetsApi.md#list_available_budget) | **GET** /api/v1/available_budgets | List all available budget amounts.
-[**store_available_budget**](AvailableBudgetsApi.md#store_available_budget) | **POST** /api/v1/available_budgets | Store a new available budget
-[**update_available_budget**](AvailableBudgetsApi.md#update_available_budget) | **PUT** /api/v1/available_budgets/{id} | Update existing available budget, to change for example the date range of the amount or the amount itself.
+[**get_available_budget**](AvailableBudgetsApi.md#get_available_budget) | **GET** /v1/available-budgets/{id} | Get a single available budget.
+[**list_available_budgets**](AvailableBudgetsApi.md#list_available_budgets) | **GET** /v1/available-budgets | List all available budget amounts.
 
-
-
-## delete_available_budget
-
-> delete_available_budget(id)
-Delete an available budget.
-
-Delete an available budget. Not much more to say.
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**id** | **String** | The ID of the available budget. | [required] |
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[firefly_iii_auth](../README.md#firefly_iii_auth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## get_available_budget
 
-> crate::models::AvailableBudgetSingle get_available_budget(id)
+> models::AvailableBudgetSingle get_available_budget(id, x_trace_id)
 Get a single available budget.
 
 Get a single available budget, by ID.
@@ -55,112 +22,54 @@ Get a single available budget, by ID.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **String** | The ID of the available budget. | [required] |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
 
 ### Return type
 
-[**crate::models::AvailableBudgetSingle**](AvailableBudgetSingle.md)
+[**models::AvailableBudgetSingle**](AvailableBudgetSingle.md)
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.api+json
+- **Accept**: application/json, application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## list_available_budget
+## list_available_budgets
 
-> crate::models::AvailableBudgetArray list_available_budget(page, start, end)
+> models::AvailableBudgetArray list_available_budgets(x_trace_id, limit, page, start, end)
 List all available budget amounts.
 
-Firefly III allows users to set the amount that is available to be budgeted in so-called \"available budgets\". For example, the user could have 1200,- available to be divided during the coming month. This amount is used on the /budgets page. This endpoint returns all of these amounts and the periods for which they are set. 
+Firefly III calculates the total amount of money budgeted in so-called \"available budgets\". This endpoint returns all of these amounts and the periods for which they are calculated. 
 
 ### Parameters
 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**page** | Option<**i32**> | Page number. The default pagination is 50. |  |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
+**limit** | Option<**i32**> | Number of items per page. The default pagination is per 50 items. |  |
+**page** | Option<**i32**> | Page number. The default pagination is per 50 items. |  |
 **start** | Option<**String**> | A date formatted YYYY-MM-DD.  |  |
 **end** | Option<**String**> | A date formatted YYYY-MM-DD.  |  |
 
 ### Return type
 
-[**crate::models::AvailableBudgetArray**](AvailableBudgetArray.md)
+[**models::AvailableBudgetArray**](AvailableBudgetArray.md)
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.api+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## store_available_budget
-
-> crate::models::AvailableBudgetSingle store_available_budget(available_budget_store)
-Store a new available budget
-
-Creates a new available budget for a specified period. The data required can be submitted as a JSON body or as a list of parameters. 
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**available_budget_store** | [**AvailableBudgetStore**](AvailableBudgetStore.md) | JSON array or key=value pairs with the necessary available budget information. See the model for the exact specifications. | [required] |
-
-### Return type
-
-[**crate::models::AvailableBudgetSingle**](AvailableBudgetSingle.md)
-
-### Authorization
-
-[firefly_iii_auth](../README.md#firefly_iii_auth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/vnd.api+json, application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## update_available_budget
-
-> crate::models::AvailableBudgetSingle update_available_budget(id, available_budget_update)
-Update existing available budget, to change for example the date range of the amount or the amount itself.
-
-Update existing available budget.
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**id** | **String** | The ID of the object.X | [required] |
-**available_budget_update** | [**AvailableBudgetUpdate**](AvailableBudgetUpdate.md) | JSON array or form value with updated available budget information. See the model for the exact specifications. | [required] |
-
-### Return type
-
-[**crate::models::AvailableBudgetSingle**](AvailableBudgetSingle.md)
-
-### Authorization
-
-[firefly_iii_auth](../README.md#firefly_iii_auth)
-
-### HTTP request headers
-
-- **Content-Type**: application/vnd.api+json, application/x-www-form-urlencoded
-- **Accept**: application/vnd.api+json, application/json
+- **Accept**: application/json, application/vnd.api+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

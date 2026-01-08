@@ -16,7 +16,7 @@ pub enum Error<T> {
     ResponseError(ResponseContent<T>),
 }
 
-impl <T> fmt::Display for Error<T> {
+impl<T> fmt::Display for Error<T> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         let (module, e) = match self {
             Error::Reqwest(e) => ("reqwest", e.to_string()),
@@ -28,7 +28,7 @@ impl <T> fmt::Display for Error<T> {
     }
 }
 
-impl <T: fmt::Debug> error::Error for Error<T> {
+impl<T: fmt::Debug> error::Error for Error<T> {
     fn source(&self) -> Option<&(dyn error::Error + 'static)> {
         Some(match self {
             Error::Reqwest(e) => e,
@@ -39,19 +39,19 @@ impl <T: fmt::Debug> error::Error for Error<T> {
     }
 }
 
-impl <T> From<reqwest::Error> for Error<T> {
+impl<T> From<reqwest::Error> for Error<T> {
     fn from(e: reqwest::Error) -> Self {
         Error::Reqwest(e)
     }
 }
 
-impl <T> From<serde_json::Error> for Error<T> {
+impl<T> From<serde_json::Error> for Error<T> {
     fn from(e: serde_json::Error) -> Self {
         Error::Serde(e)
     }
 }
 
-impl <T> From<std::io::Error> for Error<T> {
+impl<T> From<std::io::Error> for Error<T> {
     fn from(e: std::io::Error) -> Self {
         Error::Io(e)
     }
@@ -72,6 +72,7 @@ pub mod categories_api;
 pub mod charts_api;
 pub mod configuration_api;
 pub mod currencies_api;
+pub mod currency_exchange_rates_api;
 pub mod data_api;
 pub mod insight_api;
 pub mod links_api;
@@ -85,6 +86,7 @@ pub mod search_api;
 pub mod summary_api;
 pub mod tags_api;
 pub mod transactions_api;
+pub mod user_groups_api;
 pub mod users_api;
 pub mod webhooks_api;
 

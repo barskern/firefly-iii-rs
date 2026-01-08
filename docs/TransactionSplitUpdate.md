@@ -4,12 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**transaction_journal_id** | Option<**String**> | Transaction journal ID of current transaction (split). | [optional]
+**r#type** | Option<[**models::TransactionTypeProperty**](TransactionTypeProperty.md)> |  | [optional]
 **date** | Option<**String**> | Date of the transaction | [optional]
 **amount** | Option<**String**> | Amount of the transaction. | [optional]
 **description** | Option<**String**> | Description of the transaction. | [optional]
 **order** | Option<**i32**> | Order of this entry in the list of transactions. | [optional]
-**currency_id** | Option<**String**> | Currency ID. Default is the source account's currency, or the user's default currency. Can be used instead of currency_code. | [optional]
-**currency_code** | Option<**String**> | Currency code. Default is the source account's currency, or the user's default currency. Can be used instead of currency_id. | [optional]
+**currency_id** | Option<**String**> | Currency ID. Default is the source account's currency, or the user's financial administration's primary currency. Can be used instead of currency_code. | [optional]
+**currency_code** | Option<**String**> | Currency code. Default is the source account's currency, or the user's financial administration's primary currency. Can be used instead of currency_id. | [optional]
 **currency_symbol** | Option<**String**> |  | [optional][readonly]
 **currency_name** | Option<**String**> |  | [optional][readonly]
 **currency_decimal_places** | Option<**i32**> | Number of decimals used in this currency. | [optional][readonly]
@@ -36,7 +38,6 @@ Name | Type | Description | Notes
 **internal_reference** | Option<**String**> | Reference to internal reference of other systems. | [optional]
 **external_id** | Option<**String**> | Reference to external ID in other systems. | [optional]
 **external_url** | Option<**String**> | External, custom URL for this transaction. | [optional]
-**bunq_payment_id** | Option<**String**> | Internal ID of bunq transaction. | [optional]
 **sepa_cc** | Option<**String**> | SEPA Clearing Code | [optional]
 **sepa_ct_op** | Option<**String**> | SEPA Opposing Account Identifier | [optional]
 **sepa_ct_id** | Option<**String**> | SEPA end-to-end Identifier | [optional]

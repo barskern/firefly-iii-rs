@@ -6,11 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | 
 **name** | **String** | Name of the piggy bank found by an auto-complete search. | 
-**currency_id** | Option<**String**> | Currency ID for this piggy bank. | [optional]
-**currency_code** | Option<**String**> | Currency code for this piggy bank. | [optional]
+**currency_id** | Option<**String**> | Currency ID for this piggy bank. This will always be the currency of the piggy bank, never the user's primary currency. | [optional]
+**currency_code** | Option<**String**> | Currency code for this piggy bank. This will always be the currency of the piggy bank, never the user's primary currency. | [optional]
 **currency_symbol** | Option<**String**> |  | [optional]
-**currency_name** | Option<**String**> | Currency name for the currency used by this account. | [optional]
-**currency_decimal_places** | Option<**i32**> |  | [optional]
+**currency_name** | Option<**String**> | Currency name for the currency used by this piggy bank. This will always be the currency of the piggy bank, never the user's primary currency. | [optional]
+**currency_decimal_places** | Option<**i32**> | Number of decimal places for the currency used by this piggy bank. This will always be the currency of the piggy bank, never the user's primary currency. | [optional]
 **object_group_id** | Option<**String**> | The group ID of the group this object is part of. NULL if no group. | [optional]
 **object_group_title** | Option<**String**> | The name of the group. NULL if no group. | [optional]
 

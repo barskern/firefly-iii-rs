@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_type** | [**crate::models::RecurrenceTransactionType**](RecurrenceTransactionType.md) |  | 
+**r#type** | [**models::RecurrenceTransactionType**](RecurrenceTransactionType.md) |  | 
 **title** | **String** |  | 
 **description** | Option<**String**> | Not to be confused with the description of the actual transaction(s) being created. | [optional]
 **first_date** | [**String**](string.md) | First time the recurring transaction will fire. Must be after today. | 
@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **apply_rules** | Option<**bool**> | Whether or not to fire the rules after the creation of a transaction. | [optional]
 **active** | Option<**bool**> | If the recurrence is even active. | [optional]
 **notes** | Option<**String**> |  | [optional]
-**repetitions** | [**Vec<crate::models::RecurrenceRepetitionStore>**](RecurrenceRepetitionStore.md) |  | 
-**transactions** | [**Vec<crate::models::RecurrenceTransactionStore>**](RecurrenceTransactionStore.md) |  | 
+**repetitions** | [**Vec<models::RecurrenceRepetitionStore>**](RecurrenceRepetitionStore.md) |  | 
+**transactions** | [**Vec<models::RecurrenceTransactionStore>**](RecurrenceTransactionStore.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | Option<**String**> |  | [optional][readonly]
 **created_at** | Option<**String**> |  | [optional][readonly]
 **updated_at** | Option<**String**> |  | [optional][readonly]
-**_type** | [**crate::models::RuleActionKeyword**](RuleActionKeyword.md) |  | 
+**r#type** | [**models::RuleActionKeyword**](RuleActionKeyword.md) |  | 
 **value** | Option<**String**> | The accompanying value the action will set, change or update. Can be empty, but for some types this value is mandatory. | 
 **order** | Option<**i32**> | Order of the action | [optional]
 **active** | Option<**bool**> | If the action is active. Defaults to true. | [optional][default to true]

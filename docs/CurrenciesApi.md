@@ -1,61 +1,31 @@
 # \CurrenciesApi
 
-All URIs are relative to *https://demo.firefly-iii.org*
+All URIs are relative to *https://demo.firefly-iii.org/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**default_currency**](CurrenciesApi.md#default_currency) | **POST** /api/v1/currencies/{code}/default | Make currency default currency.
-[**delete_currency**](CurrenciesApi.md#delete_currency) | **DELETE** /api/v1/currencies/{code} | Delete a currency.
-[**disable_currency**](CurrenciesApi.md#disable_currency) | **POST** /api/v1/currencies/{code}/disable | Disable a currency.
-[**enable_currency**](CurrenciesApi.md#enable_currency) | **POST** /api/v1/currencies/{code}/enable | Enable a single currency.
-[**get_currency**](CurrenciesApi.md#get_currency) | **GET** /api/v1/currencies/{code} | Get a single currency.
-[**get_default_currency**](CurrenciesApi.md#get_default_currency) | **GET** /api/v1/currencies/default | Get the user's default currency.
-[**list_account_by_currency**](CurrenciesApi.md#list_account_by_currency) | **GET** /api/v1/currencies/{code}/accounts | List all accounts with this currency.
-[**list_available_budget_by_currency**](CurrenciesApi.md#list_available_budget_by_currency) | **GET** /api/v1/currencies/{code}/available_budgets | List all available budgets with this currency.
-[**list_bill_by_currency**](CurrenciesApi.md#list_bill_by_currency) | **GET** /api/v1/currencies/{code}/bills | List all bills with this currency.
-[**list_budget_limit_by_currency**](CurrenciesApi.md#list_budget_limit_by_currency) | **GET** /api/v1/currencies/{code}/budget_limits | List all budget limits with this currency
-[**list_currency**](CurrenciesApi.md#list_currency) | **GET** /api/v1/currencies | List all currencies.
-[**list_recurrence_by_currency**](CurrenciesApi.md#list_recurrence_by_currency) | **GET** /api/v1/currencies/{code}/recurrences | List all recurring transactions with this currency.
-[**list_rule_by_currency**](CurrenciesApi.md#list_rule_by_currency) | **GET** /api/v1/currencies/{code}/rules | List all rules with this currency.
-[**list_transaction_by_currency**](CurrenciesApi.md#list_transaction_by_currency) | **GET** /api/v1/currencies/{code}/transactions | List all transactions with this currency.
-[**store_currency**](CurrenciesApi.md#store_currency) | **POST** /api/v1/currencies | Store a new currency
-[**update_currency**](CurrenciesApi.md#update_currency) | **PUT** /api/v1/currencies/{code} | Update existing currency.
+[**delete_currency**](CurrenciesApi.md#delete_currency) | **DELETE** /v1/currencies/{code} | Delete a currency.
+[**disable_currency**](CurrenciesApi.md#disable_currency) | **POST** /v1/currencies/{code}/disable | Disable a currency.
+[**enable_currency**](CurrenciesApi.md#enable_currency) | **POST** /v1/currencies/{code}/enable | Enable a single currency.
+[**get_currency**](CurrenciesApi.md#get_currency) | **GET** /v1/currencies/{code} | Get a single currency.
+[**get_primary_currency**](CurrenciesApi.md#get_primary_currency) | **GET** /v1/currencies/primary | Get the primary currency of the current administration.
+[**list_account_by_currency**](CurrenciesApi.md#list_account_by_currency) | **GET** /v1/currencies/{code}/accounts | List all accounts with this currency.
+[**list_available_budget_by_currency**](CurrenciesApi.md#list_available_budget_by_currency) | **GET** /v1/currencies/{code}/available-budgets | List all available budgets with this currency.
+[**list_bill_by_currency**](CurrenciesApi.md#list_bill_by_currency) | **GET** /v1/currencies/{code}/bills | List all bills with this currency.
+[**list_budget_limit_by_currency**](CurrenciesApi.md#list_budget_limit_by_currency) | **GET** /v1/currencies/{code}/budget-limits | List all budget limits with this currency
+[**list_currency**](CurrenciesApi.md#list_currency) | **GET** /v1/currencies | List all currencies.
+[**list_recurrence_by_currency**](CurrenciesApi.md#list_recurrence_by_currency) | **GET** /v1/currencies/{code}/recurrences | List all recurring transactions with this currency.
+[**list_rule_by_currency**](CurrenciesApi.md#list_rule_by_currency) | **GET** /v1/currencies/{code}/rules | List all rules with this currency.
+[**list_transaction_by_currency**](CurrenciesApi.md#list_transaction_by_currency) | **GET** /v1/currencies/{code}/transactions | List all transactions with this currency.
+[**primary_currency**](CurrenciesApi.md#primary_currency) | **POST** /v1/currencies/{code}/primary | Make currency primary currency.
+[**store_currency**](CurrenciesApi.md#store_currency) | **POST** /v1/currencies | Store a new currency
+[**update_currency**](CurrenciesApi.md#update_currency) | **PUT** /v1/currencies/{code} | Update existing currency.
 
-
-
-## default_currency
-
-> crate::models::CurrencySingle default_currency(code)
-Make currency default currency.
-
-Make this currency the default currency for the user. If the currency is not enabled, it will be enabled as well.
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**code** | **String** | The currency code. | [required] |
-
-### Return type
-
-[**crate::models::CurrencySingle**](CurrencySingle.md)
-
-### Authorization
-
-[firefly_iii_auth](../README.md#firefly_iii_auth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.api+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## delete_currency
 
-> delete_currency(code)
+> delete_currency(code, x_trace_id)
 Delete a currency.
 
 Delete a currency.
@@ -66,6 +36,7 @@ Delete a currency.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **code** | **String** | The currency code. | [required] |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
 
 ### Return type
 
@@ -73,19 +44,19 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## disable_currency
 
-> crate::models::CurrencySingle disable_currency(code)
+> models::CurrencySingle disable_currency(code, x_trace_id)
 Disable a currency.
 
 Disable a currency.
@@ -95,27 +66,28 @@ Disable a currency.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**code** | **i32** | The currency code. | [required] |
+**code** | **String** | The currency code. | [required] |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
 
 ### Return type
 
-[**crate::models::CurrencySingle**](CurrencySingle.md)
+[**models::CurrencySingle**](CurrencySingle.md)
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## enable_currency
 
-> crate::models::CurrencySingle enable_currency(code)
+> models::CurrencySingle enable_currency(code, x_trace_id)
 Enable a single currency.
 
 Enable a single currency.
@@ -126,26 +98,27 @@ Enable a single currency.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **code** | **String** | The currency code. | [required] |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
 
 ### Return type
 
-[**crate::models::CurrencySingle**](CurrencySingle.md)
+[**models::CurrencySingle**](CurrencySingle.md)
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## get_currency
 
-> crate::models::CurrencySingle get_currency(code)
+> models::CurrencySingle get_currency(code, x_trace_id)
 Get a single currency.
 
 Get a single currency.
@@ -156,41 +129,45 @@ Get a single currency.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **code** | **String** | The currency code. | [required] |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
 
 ### Return type
 
-[**crate::models::CurrencySingle**](CurrencySingle.md)
+[**models::CurrencySingle**](CurrencySingle.md)
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## get_default_currency
+## get_primary_currency
 
-> crate::models::CurrencySingle get_default_currency()
-Get the user's default currency.
+> models::CurrencySingle get_primary_currency(x_trace_id)
+Get the primary currency of the current administration.
 
-Get the user's default currency.
+Get the primary currency of the current administration. This replaces what was called \"the user's default currency\" although they are essentially the same.
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
 
 ### Return type
 
-[**crate::models::CurrencySingle**](CurrencySingle.md)
+[**models::CurrencySingle**](CurrencySingle.md)
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 
@@ -202,7 +179,7 @@ This endpoint does not need any parameter.
 
 ## list_account_by_currency
 
-> crate::models::AccountArray list_account_by_currency(code, page, date, _type)
+> models::AccountArray list_account_by_currency(code, x_trace_id, limit, page, date, r#type)
 List all accounts with this currency.
 
 List all accounts with this currency.
@@ -213,29 +190,31 @@ List all accounts with this currency.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **code** | **String** | The currency code. | [required] |
-**page** | Option<**i32**> | Page number. The default pagination is 50. |  |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
+**limit** | Option<**i32**> | Number of items per page. The default pagination is per 50 items. |  |
+**page** | Option<**i32**> | Page number. The default pagination is per 50 items. |  |
 **date** | Option<**String**> | A date formatted YYYY-MM-DD. When added to the request, Firefly III will show the account's balance on that day.  |  |
-**_type** | Option<[**crate::models::AccountTypeFilter**](.md)> | Optional filter on the account type(s) returned |  |
+**r#type** | Option<[**AccountTypeFilter**](.md)> | Optional filter on the account type(s) returned |  |
 
 ### Return type
 
-[**crate::models::AccountArray**](AccountArray.md)
+[**models::AccountArray**](AccountArray.md)
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## list_available_budget_by_currency
 
-> crate::models::AvailableBudgetArray list_available_budget_by_currency(code, page)
+> models::AvailableBudgetArray list_available_budget_by_currency(code, x_trace_id, limit, page)
 List all available budgets with this currency.
 
 List all available budgets with this currency.
@@ -246,27 +225,29 @@ List all available budgets with this currency.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **code** | **String** | The currency code. | [required] |
-**page** | Option<**i32**> | Page number. The default pagination is 50 |  |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
+**limit** | Option<**i32**> | Number of items per page. The default pagination is per 50 items. |  |
+**page** | Option<**i32**> | Page number. The default pagination is per 50 items. |  |
 
 ### Return type
 
-[**crate::models::AvailableBudgetArray**](AvailableBudgetArray.md)
+[**models::AvailableBudgetArray**](AvailableBudgetArray.md)
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## list_bill_by_currency
 
-> crate::models::BillArray list_bill_by_currency(code, page)
+> models::BillArray list_bill_by_currency(code, x_trace_id, limit, page)
 List all bills with this currency.
 
 List all bills with this currency.
@@ -277,27 +258,29 @@ List all bills with this currency.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **code** | **String** | The currency code. | [required] |
-**page** | Option<**i32**> | Page number. The default pagination is 50. |  |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
+**limit** | Option<**i32**> | Number of items per page. The default pagination is per 50 items. |  |
+**page** | Option<**i32**> | Page number. The default pagination is per 50 items. |  |
 
 ### Return type
 
-[**crate::models::BillArray**](BillArray.md)
+[**models::BillArray**](BillArray.md)
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## list_budget_limit_by_currency
 
-> crate::models::BudgetLimitArray list_budget_limit_by_currency(code, page, start, end)
+> models::BudgetLimitArray list_budget_limit_by_currency(code, x_trace_id, limit, page, start, end)
 List all budget limits with this currency
 
 List all budget limits with this currency
@@ -308,29 +291,31 @@ List all budget limits with this currency
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **code** | **String** | The currency code. | [required] |
-**page** | Option<**i32**> | Page number. The default pagination is 50. |  |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
+**limit** | Option<**i32**> | Number of items per page. The default pagination is per 50 items. |  |
+**page** | Option<**i32**> | Page number. The default pagination is per 50 items. |  |
 **start** | Option<**String**> | Start date for the budget limit list. |  |
 **end** | Option<**String**> | End date for the budget limit list. |  |
 
 ### Return type
 
-[**crate::models::BudgetLimitArray**](BudgetLimitArray.md)
+[**models::BudgetLimitArray**](BudgetLimitArray.md)
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## list_currency
 
-> crate::models::CurrencyArray list_currency(page)
+> models::CurrencyArray list_currency(x_trace_id, limit, page)
 List all currencies.
 
 List all currencies.
@@ -340,27 +325,29 @@ List all currencies.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**page** | Option<**i32**> | Page number. The default pagination is 50. |  |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
+**limit** | Option<**i32**> | Number of items per page. The default pagination is per 50 items. |  |
+**page** | Option<**i32**> | Page number. The default pagination is per 50 items. |  |
 
 ### Return type
 
-[**crate::models::CurrencyArray**](CurrencyArray.md)
+[**models::CurrencyArray**](CurrencyArray.md)
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## list_recurrence_by_currency
 
-> crate::models::RecurrenceArray list_recurrence_by_currency(code, page)
+> models::RecurrenceArray list_recurrence_by_currency(code, x_trace_id, limit, page)
 List all recurring transactions with this currency.
 
 List all recurring transactions with this currency.
@@ -371,27 +358,29 @@ List all recurring transactions with this currency.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **code** | **String** | The currency code. | [required] |
-**page** | Option<**i32**> | Page number. The default pagination is 50. |  |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
+**limit** | Option<**i32**> | Number of items per page. The default pagination is per 50 items. |  |
+**page** | Option<**i32**> | Page number. The default pagination is per 50 items. |  |
 
 ### Return type
 
-[**crate::models::RecurrenceArray**](RecurrenceArray.md)
+[**models::RecurrenceArray**](RecurrenceArray.md)
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## list_rule_by_currency
 
-> crate::models::RuleArray list_rule_by_currency(code, page)
+> models::RuleArray list_rule_by_currency(code, x_trace_id, limit, page)
 List all rules with this currency.
 
 List all rules with this currency.
@@ -402,27 +391,29 @@ List all rules with this currency.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **code** | **String** | The currency code. | [required] |
-**page** | Option<**i32**> | Page number. The default pagination per 50. |  |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
+**limit** | Option<**i32**> | Number of items per page. The default pagination is per 50 items. |  |
+**page** | Option<**i32**> | Page number. The default pagination is per 50 items. |  |
 
 ### Return type
 
-[**crate::models::RuleArray**](RuleArray.md)
+[**models::RuleArray**](RuleArray.md)
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## list_transaction_by_currency
 
-> crate::models::TransactionArray list_transaction_by_currency(code, page, start, end, _type)
+> models::TransactionArray list_transaction_by_currency(code, x_trace_id, limit, page, start, end, r#type)
 List all transactions with this currency.
 
 List all transactions with this currency.
@@ -433,30 +424,63 @@ List all transactions with this currency.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **code** | **String** | The currency code. | [required] |
-**page** | Option<**i32**> | Page number. The default pagination is per 50. |  |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
+**limit** | Option<**i32**> | Number of items per page. The default pagination is per 50 items. |  |
+**page** | Option<**i32**> | Page number. The default pagination is per 50 items. |  |
 **start** | Option<**String**> | A date formatted YYYY-MM-DD, to limit the list of transactions.  |  |
 **end** | Option<**String**> | A date formatted YYYY-MM-DD, to limit the list of transactions.  |  |
-**_type** | Option<[**crate::models::TransactionTypeFilter**](.md)> | Optional filter on the transaction type(s) returned |  |
+**r#type** | Option<[**TransactionTypeFilter**](.md)> | Optional filter on the transaction type(s) returned |  |
 
 ### Return type
 
-[**crate::models::TransactionArray**](TransactionArray.md)
+[**models::TransactionArray**](TransactionArray.md)
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.api+json
+- **Accept**: application/vnd.api+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## primary_currency
+
+> models::CurrencySingle primary_currency(code, x_trace_id)
+Make currency primary currency.
+
+Make this currency the primary currency for the current financial administration. If the currency is not enabled, it will be enabled as well.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**code** | **String** | The currency code. | [required] |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
+
+### Return type
+
+[**models::CurrencySingle**](CurrencySingle.md)
+
+### Authorization
+
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.api+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## store_currency
 
-> crate::models::CurrencySingle store_currency(currency_store)
+> models::CurrencySingle store_currency(currency_store, x_trace_id)
 Store a new currency
 
 Creates a new currency. The data required can be submitted as a JSON body or as a list of parameters.
@@ -467,14 +491,15 @@ Creates a new currency. The data required can be submitted as a JSON body or as 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **currency_store** | [**CurrencyStore**](CurrencyStore.md) | JSON array or key=value pairs with the necessary currency information. See the model for the exact specifications. | [required] |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
 
 ### Return type
 
-[**crate::models::CurrencySingle**](CurrencySingle.md)
+[**models::CurrencySingle**](CurrencySingle.md)
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 
@@ -486,7 +511,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_currency
 
-> crate::models::CurrencySingle update_currency(code, currency_update)
+> models::CurrencySingle update_currency(code, currency_update, x_trace_id)
 Update existing currency.
 
 Update existing currency.
@@ -498,14 +523,15 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **code** | **String** | The currency code. | [required] |
 **currency_update** | [**CurrencyUpdate**](CurrencyUpdate.md) | JSON array with updated currency information. See the model for the exact specifications. | [required] |
+**x_trace_id** | Option<**uuid::Uuid**> | Unique identifier associated with this request. |  |
 
 ### Return type
 
-[**crate::models::CurrencySingle**](CurrencySingle.md)
+[**models::CurrencySingle**](CurrencySingle.md)
 
 ### Authorization
 
-[firefly_iii_auth](../README.md#firefly_iii_auth)
+[firefly_iii_auth](../README.md#firefly_iii_auth), [local_bearer_auth](../README.md#local_bearer_auth)
 
 ### HTTP request headers
 

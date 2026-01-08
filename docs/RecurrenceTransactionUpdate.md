@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **String** |  | 
 **description** | Option<**String**> |  | [optional]
 **amount** | Option<**String**> | Amount of the transaction. | [optional]
 **foreign_amount** | Option<**String**> | Foreign amount of the transaction. | [optional]
@@ -16,6 +17,7 @@ Name | Type | Description | Notes
 **destination_id** | Option<**String**> | ID of the destination account. Submit either this or destination_name. | [optional]
 **tags** | Option<**Vec<String>**> | Array of tags. | [optional]
 **piggy_bank_id** | Option<**String**> |  | [optional]
+**bill_id** | Option<**String**> | Optional. | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

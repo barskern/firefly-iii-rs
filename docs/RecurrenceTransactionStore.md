@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **destination_id** | **String** | ID of the destination account. | 
 **tags** | Option<**Vec<String>**> | Array of tags. | [optional]
 **piggy_bank_id** | Option<**String**> | Optional. | [optional]
+**bill_id** | Option<**String**> | Optional. | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

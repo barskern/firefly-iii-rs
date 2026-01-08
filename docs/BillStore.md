@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **date** | **String** |  | 
 **end_date** | Option<**String**> | The date after which this bill is no longer valid or applicable | [optional]
 **extension_date** | Option<**String**> | The date before which the bill must be renewed (or cancelled) | [optional]
-**repeat_freq** | [**crate::models::BillRepeatFrequency**](BillRepeatFrequency.md) |  | 
+**repeat_freq** | [**models::BillRepeatFrequency**](BillRepeatFrequency.md) |  | 
 **skip** | Option<**i32**> | How often the bill must be skipped. 1 means a bi-monthly bill. | [optional]
 **active** | Option<**bool**> | If the bill is active. | [optional]
 **notes** | Option<**String**> |  | [optional]
