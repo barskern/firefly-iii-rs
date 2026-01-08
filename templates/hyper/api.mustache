@@ -1,9 +1,13 @@
 {{>partial_header}}
-use std::rc::Rc;
-use std::borrow::Borrow;
-use std::pin::Pin;
-#[allow(unused_imports)]
-use std::option::Option;
+
+#![allow(unused_imports)]
+
+use std::{
+    rc::Rc,
+    borrow::Borrow,
+    pin::Pin,
+    option::Option
+};
 
 use hyper;
 use futures::Future;
